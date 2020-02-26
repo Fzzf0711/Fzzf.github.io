@@ -147,19 +147,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-单例模式-饿汉式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-单例模式(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E9%A5%BF%E6%B1%89%E5%BC%8F/">单例模式-饿汉式</a>
+      <a class="article-title" href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/">单例模式(1)</a>
     </h1>
   
 
         
-        <a href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E9%A5%BF%E6%B1%89%E5%BC%8F/" class="archive-article-date">
+        <a href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/" class="archive-article-date">
   	<time datetime="2020-02-26T15:07:49.972Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
 </a>
         
@@ -167,13 +167,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单例模式-饿汉式"><a href="#单例模式-饿汉式" class="headerlink" title="单例模式-饿汉式"></a>单例模式-饿汉式</h1><p><strong>1.手写单例模式</strong></p>
+        <h1 id="单例模式（一）"><a href="#单例模式（一）" class="headerlink" title="单例模式（一）"></a>单例模式（一）</h1><p><strong>1.手写单例模式</strong></p>
 <p><strong>2.线程安全的单例模式</strong></p>
 <h2 id="什么是单例模式"><a href="#什么是单例模式" class="headerlink" title="什么是单例模式"></a>什么是单例模式</h2><p>单例模式在整个程序中只能有一个实例，这个类负责创建自己的对象，并确保只有一个对象被创建。</p>
 <h2 id="代码实现的要点"><a href="#代码实现的要点" class="headerlink" title="代码实现的要点"></a>代码实现的要点</h2><p>a.私有构造器</p>
 <p>b.持有该类的属性</p>
 <p>c.对外提供获取实例的静态方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * <span class="meta">@author</span> Fzzf</span><br><span class="line"> * 饿汉式，类加载机制实现，线程安全；</span><br><span class="line"> * 缺点:容易造成浪费，对反射和反序列化是不安全的；</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single1 instance = <span class="keyword">new</span> Single1();</span><br><span class="line">    <span class="comment">//持有该类的属性</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//私有化构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single1 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//对外提供获取实例的静态方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * <span class="meta">@author</span> Fzzf</span><br><span class="line"> * 饿汉式，类加载机制实现，线程安全；</span><br><span class="line"> * 缺点:容易造成浪费，对反射和反序列化是不安全的；</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single1 instance = <span class="keyword">new</span> Single1();</span><br><span class="line">    <span class="comment">//持有该类的属性，类加载就实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//私有化构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single1 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//对外提供获取实例的静态方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="登记式"><a href="#登记式" class="headerlink" title="登记式"></a>登记式</h2><p>注册登记式：每使用一次，都往一个固定的容器中去注册并且将使用过的对象进行缓存，下次去取对象的时候，就直接从缓存中取值，以保证每次获取的对象都是同一个对象，IOC的单例模式，就是典型的注册登记是单例。</p>
+
       
 
       
@@ -185,7 +188,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E9%A5%BF%E6%B1%89%E5%BC%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/">展开全文 >></a>
         </p>
       
 
