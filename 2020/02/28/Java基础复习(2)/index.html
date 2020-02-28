@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>单例模式(1) | Fzzf的博客</title>
+  <title>Java基础复习(2) | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常见问题1.手写单例模式 2.线程安全的单例模式 什么是单例模式单例模式在整个程序中只能有一个实例，这个类负责创建自己的对象，并确保只有一个对象被创建。 代码实现的要点a.私有构造器 b.持有该类的属性 c.对外提供获取实例的静态方法">
+  <meta name="description" content="final,static,this,super 关键字总结final 关键字final关键字主要用在三个地方：变量、方法、类。 1.对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。 2.当用final修饰一个类时，表明这个类不能被继承。final类中的所有成员方法都会被隐式地指定为final方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式(1)">
-<meta property="og:url" content="http://yoursite.com/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/index.html">
+<meta property="og:title" content="Java基础复习(2)">
+<meta property="og:url" content="http://yoursite.com/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="常见问题1.手写单例模式 2.线程安全的单例模式 什么是单例模式单例模式在整个程序中只能有一个实例，这个类负责创建自己的对象，并确保只有一个对象被创建。 代码实现的要点a.私有构造器 b.持有该类的属性 c.对外提供获取实例的静态方法">
+<meta property="og:description" content="final,static,this,super 关键字总结final 关键字final关键字主要用在三个地方：变量、方法、类。 1.对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。 2.当用final修饰一个类时，表明这个类不能被继承。final类中的所有成员方法都会被隐式地指定为final方">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-26T15:48:32.285Z">
-<meta property="article:modified_time" content="2020-02-27T12:45:27.070Z">
+<meta property="article:published_time" content="2020-02-28T01:45:01.779Z">
+<meta property="article:modified_time" content="2020-02-28T02:58:52.787Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -150,42 +150,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-单例模式(1)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java基础复习(2)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      单例模式(1)
+      Java基础复习(2)
     </h1>
   
 
         
-        <a href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/" class="archive-article-date">
-  	<time datetime="2020-02-26T15:48:32.285Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
+        <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/" class="archive-article-date">
+  	<time datetime="2020-02-28T01:45:01.779Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>1.手写单例模式</strong></p>
-<p><strong>2.线程安全的单例模式</strong></p>
-<h2 id="什么是单例模式"><a href="#什么是单例模式" class="headerlink" title="什么是单例模式"></a>什么是单例模式</h2><p>单例模式在整个程序中只能有一个实例，这个类负责创建自己的对象，并确保只有一个对象被创建。</p>
-<h2 id="代码实现的要点"><a href="#代码实现的要点" class="headerlink" title="代码实现的要点"></a>代码实现的要点</h2><p>a.私有构造器</p>
-<p>b.持有该类的属性</p>
-<p>c.对外提供获取实例的静态方法</p>
+        <h1 id="final-static-this-super-关键字总结"><a href="#final-static-this-super-关键字总结" class="headerlink" title="final,static,this,super 关键字总结"></a>final,static,this,super 关键字总结</h1><h2 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h2><p><strong>final关键字主要用在三个地方：变量、方法、类。</strong></p>
+<p><strong>1.对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</strong></p>
+<p>2.<strong>当用final修饰一个类时，表明这个类不能被继承。final类中的所有成员方法都会被隐式地指定为final方法。</strong></p>
+<p>3.使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升（现在的Java版本已经不需要使用final方法进行这些优化了）。类中所有的private方法都隐式地指定为final。</p>
 <a id="more"></a>
 
-<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * <span class="meta">@author</span> Fzzf</span><br><span class="line"> * 饿汉式，类加载机制实现，线程安全；</span><br><span class="line"> * 缺点:容易造成浪费，对反射和反序列化是不安全的；</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single1 instance = <span class="keyword">new</span> Single1();</span><br><span class="line">    <span class="comment">//持有该类的属性，类加载就实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//私有化构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single1 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//对外提供获取实例的静态方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h2><p>this关键字用于引用类的当前实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager</span> </span>&#123;</span><br><span class="line">    Employees[] employees;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">manageEmployees</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> totalEmp = <span class="keyword">this</span>.employees.length;<span class="comment">//访问类Manger的当前实例的变量</span></span><br><span class="line">        System.out.println(<span class="string">"Total employees: "</span> + totalEmp);</span><br><span class="line">        <span class="keyword">this</span>.report();<span class="comment">//调用类Manger的当前实力放法。</span></span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">report</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="登记式"><a href="#登记式" class="headerlink" title="登记式"></a>登记式</h2><p>注册登记式：每使用一次，都往一个固定的容器中去注册并且将使用过的对象进行缓存，下次去取对象的时候，就直接从缓存中取值，以保证每次获取的对象都是同一个对象，IOC的单例模式，就是典型的注册登记是单例。</p>
-<p>登记式是对一组单例模式进行的维护；主要是在数量上的扩展，通过map我们把单例存进去，这样在调用时，先判断该单例是否已经创建，是的话直接返回，不是的话创建一个登记到map中，再返回。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fzzf;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Fzzf</span></span><br><span class="line"><span class="comment"> * 单例模式-登记式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegSignleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, RegSignleton&gt; regs = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     静态工厂方法：返回指定登记对象的唯一实例</span></span><br><span class="line"><span class="comment">     @param name</span></span><br><span class="line"><span class="comment">     @return</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  <span class="keyword">static</span>  RegSignleton <span class="title">getInstance</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (name == <span class="keyword">null</span>)&#123;</span><br><span class="line">            name = RegSignleton<span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>()</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(regs.get(name) == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                regs.put(name,(RegSignleton) Class.forName(name).newInstance());</span><br><span class="line">            &#125;<span class="keyword">catch</span>(InstantiationException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="keyword">catch</span> (IllegalAccessException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="keyword">catch</span> (ClassNotFoundException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> regs.get(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此关键字是可选的，这意味着如果上面的示例在不使用此关键字的情况下表现相同。 但是，使用此关键字可能会使代码更易读或易懂。</p>
+<p>此关键字是可选的，这意味着如果上面的示例在不使用此关键字的情况下表现相同。 但是，使用此关键字可能会使代码更易读或易懂。</p>
+<h2 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h2><p>super关键字用于从子类访问父类的变量和方法。 例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> number;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">showNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"number = "</span> + number);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.number = <span class="number">10</span>;<span class="comment">// 访问父类成员变量，</span></span><br><span class="line">        <span class="keyword">super</span>.showNumber();<span class="comment">//调用其父类的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>使用 this 和 super 要注意的问题：</strong></p>
+<p>在构造器中使用 <code>super（）</code> 调用父类中的其他构造方法时，该语句必须处于构造器的首行，否则编译器会报错。另外，this 调用本类中的其他构造方法时，也要放在首行。</p>
+<p>this、super不能用在static方法中。</p>
+<p><strong>简单解释一下：</strong></p>
+<p>被 static 修饰的成员属于类，不属于单个这个类的某个对象，被类中所有对象共享。而 this 代表对本类对象的引用，指向本类对象；而 super 代表对父类对象的引用，指向父类对象；所以， <strong>this和super是属于对象范畴的东西，而静态方法是属于类范畴的东西</strong>。</p>
+<h1 id="static-关键字详解"><a href="#static-关键字详解" class="headerlink" title="static 关键字详解"></a>static 关键字详解</h1><h2 id="static-关键字主要有以下四种使用场景"><a href="#static-关键字主要有以下四种使用场景" class="headerlink" title="static 关键字主要有以下四种使用场景"></a>static 关键字主要有以下四种使用场景</h2><p>修饰成员变量和成员方法</p>
+<p>静态代码块</p>
+<p>修饰类(只能修饰内部类)</p>
+<p>静态导包(用来导入类中的静态资源，1.5之后的新特性)</p>
+<h3 id="修饰成员变量和成员方法"><a href="#修饰成员变量和成员方法" class="headerlink" title="修饰成员变量和成员方法"></a>修饰成员变量和成员方法</h3><p>被 static 修饰的成员属于类，不属于单个这个类的某个对象，被类中所有对象共享，可以并且建议通过类名调用。被static 声明的成员变量属于静态成员变量，静态变量 存放在 Java 内存区域的方法区。</p>
+<p>方法区与 Java 堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它却有一个别名叫做 Non-Heap（非堆），目的应该是与 Java 堆区分开来。</p>
+<p>调用格式：</p>
+<ul>
+<li>类名.静态变量名</li>
+<li>类名.静态方法名()</li>
+</ul>
+<p>如果变量或者方法被 private 则代表该属性或者该方法只能在类的内部被访问而不能在类的外部被访问。</p>
+<h3 id="静态方法与非静态方法"><a href="#静态方法与非静态方法" class="headerlink" title="静态方法与非静态方法"></a>静态方法与非静态方法</h3><p>静态方法属于类本身，非静态方法属于从该类生成的每个对象。 如果您的方法执行的操作不依赖于其类的各个变量和方法，请将其设置为静态（这将使程序的占用空间更小）。 否则，它应该是非静态的。</p>
+<p><strong><em>Example 1</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; </span><br><span class="line">       <span class="keyword">this</span>.i = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> An example string that doesn<span class="string">'t depend on i (an instance variable);</span></span><br><span class="line"><span class="string">       </span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    public int method2() &#123;</span></span><br><span class="line"><span class="string">       return this.i + 1;  Depends on i</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
 
-
+<p>你可以像这样调用静态方法：<code>Foo.method1（）</code>。 如果您尝试使用这种方法调用 method2 将失败。 但这样可行：<code>Foo bar = new Foo（1）;bar.method2（）;</code></p>
+<p>总结：</p>
+<p>在外部调用静态方法时，可以使用 类名.方法名 的方式，也可以使用 对象名.方法名 的方式。而实例方法只有后面这种方式。也就是说，调用静态方法可以无需创建对象。</p>
+<p>静态方法在访问本类的成员时，只允许访问静态成员(静态成员变量和静态方法)，而不允许访问实例成员变量和实例方法；实例方法则无此限制。</p>
 
       
 
@@ -265,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,15 +302,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java基础复习(1)
+          Java基础复习(3)
         
       </div>
     </a>
   
+  
+    <a href="/2020/02/27/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6(%E4%B8%80)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java集合框架(一)</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -312,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-number">1.</span> <span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是单例模式"><span class="toc-number">2.</span> <span class="toc-text">什么是单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现的要点"><span class="toc-number">3.</span> <span class="toc-text">代码实现的要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#饿汉式"><span class="toc-number">4.</span> <span class="toc-text">饿汉式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登记式"><span class="toc-number">5.</span> <span class="toc-text">登记式</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#final-static-this-super-关键字总结"><span class="toc-number">1.</span> <span class="toc-text">final,static,this,super 关键字总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#final-关键字"><span class="toc-number">1.1.</span> <span class="toc-text">final 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-关键字"><span class="toc-number">1.2.</span> <span class="toc-text">this 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#super-关键字"><span class="toc-number">1.3.</span> <span class="toc-text">super 关键字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static-关键字详解"><span class="toc-number">2.</span> <span class="toc-text">static 关键字详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#static-关键字主要有以下四种使用场景"><span class="toc-number">2.1.</span> <span class="toc-text">static 关键字主要有以下四种使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修饰成员变量和成员方法"><span class="toc-number">2.1.1.</span> <span class="toc-text">修饰成员变量和成员方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态方法与非静态方法"><span class="toc-number">2.1.2.</span> <span class="toc-text">静态方法与非静态方法</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>

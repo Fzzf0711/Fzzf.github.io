@@ -65,7 +65,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 3
+            总文章数 5
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -150,6 +150,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java基础复习(3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">Java基础复习(3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/" class="archive-article-date">
+  	<time datetime="2020-02-28T02:25:36.021Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h2><p>重载：<strong>发生在同一个类中，方法名必须相同，参数类型不同，个数不同，顺序不同</strong>，方法返回值和访问修饰符也可以不同。</p>
+<p><strong>Java允许重载任何方法，而不只是构造器方法。因此，要完整描述一个方法，需要指出方法名以及参数类型。这叫做方法签名。</strong></p>
+<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写,发生在子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类。另外，如果父类方法访问修饰符为 private 则子类就不能重写该方法。<strong>也就是说方法提供的行为改变，而方法的外貌并没有改变。</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java基础复习(2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/">Java基础复习(2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/" class="archive-article-date">
+  	<time datetime="2020-02-28T01:45:01.779Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="final-static-this-super-关键字总结"><a href="#final-static-this-super-关键字总结" class="headerlink" title="final,static,this,super 关键字总结"></a>final,static,this,super 关键字总结</h1><h2 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h2><p><strong>final关键字主要用在三个地方：变量、方法、类。</strong></p>
+<p><strong>1.对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</strong></p>
+<p>2.<strong>当用final修饰一个类时，表明这个类不能被继承。final类中的所有成员方法都会被隐式地指定为final方法。</strong></p>
+<p>3.使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升（现在的Java版本已经不需要使用final方法进行这些优化了）。类中所有的private方法都隐式地指定为final。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java集合框架(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -215,19 +346,19 @@
 
 
   
-    <article id="post-java基础复习(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java基础复习(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/27/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">java基础复习(1)</a>
+      <a class="article-title" href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">Java基础复习(1)</a>
     </h1>
   
 
         
-        <a href="/2020/02/27/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/" class="archive-article-date">
+        <a href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/" class="archive-article-date">
   	<time datetime="2020-02-27T03:44:58.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
 </a>
         
@@ -257,7 +388,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/27/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">展开全文 >></a>
         </p>
       
 
