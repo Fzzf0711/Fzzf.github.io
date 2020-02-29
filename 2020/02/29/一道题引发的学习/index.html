@@ -16,7 +16,7 @@
 <meta property="og:description" content="例题来源：ssrcoder 假设如下代码中，若t1线程在t2线程启动之前已经完成启动。代码的输出是（）  1234567891011121314151617181920212223242526272829303132package com.fzzf;public class Main&amp;#123;    public static void main(String[] args) throws Ex">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-29T13:41:19.126Z">
-<meta property="article:modified_time" content="2020-02-29T14:50:28.598Z">
+<meta property="article:modified_time" content="2020-02-29T14:51:49.903Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -195,7 +195,7 @@
 
 <p>该方法与 notify ()方法的工作方式相同，重要的一点差异是：</p>
 <p>notifyAll 使所有原来在该对象上 wait 的线程统统退出 wait 的状态（即全部被唤醒，不再等待 notify 或   notifyAll，但由于此时还没有获取到该对象锁，因此还不能继续往下执行），变成等待获取该对象上的锁，一旦该对象锁被释放（notifyAll   线程退出调用了 notifyAll 的 synchronized   代码块的时候），他们就会去竞争。如果其中一个线程获得了该对象锁，它就会继续往下执行，在它退出 synchronized 代码块，释放锁后，其他的已经被唤醒的线程将会继续竞争获取该锁，一直进行下去，直到所有被唤醒的线程都执行完毕。</p>
-<h2 id="回到本题："><a href="#回到本题：" class="headerlink" title="回到本题："></a>回到本题：</h2><p>执行obj.wait()； 已经释放锁；所以t2可以再次获取到obj；唤醒t1，等到t2执行完毕，释放锁后再继续执行他。</p>
+<h2 id="回到本题："><a href="#回到本题：" class="headerlink" title="回到本题："></a>回到本题：</h2><p>执行obj.wait()； 已经释放锁；所以t2可以再次获取到obj；唤醒t1，等到t2执行完毕，释放锁后再继续执行t1。</p>
 <p>因此输出如下：</p>
 <p><code>thread 2 sent notify</code><br><code>thread 1 wake up.</code></p>
 <p>所以选择B项。</p>
