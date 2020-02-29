@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Fzzf的博客</title>
+  <title>Java设计原则 | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="退堂鼓手">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fzzf的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="设计原则单一职责原则：修改类的原因应该只有一个，一个类只负责一个事。 开放封闭原则：类应该对扩展开放，对修改关闭。 里氏替换原则：子类的对象必须能够替换掉所有父类对象。子类需要能够当成父类来使用，并且需要比父类更加特殊。 接口分离原则：不应该强迫客户依赖于它们不用的方法。 依赖倒置原则：高层模块不应该依赖于底层模块；二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。 迪米特法则：最少">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java设计原则">
+<meta property="og:url" content="http://yoursite.com/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="退堂鼓手">
+<meta property="og:description" content="设计原则单一职责原则：修改类的原因应该只有一个，一个类只负责一个事。 开放封闭原则：类应该对扩展开放，对修改关闭。 里氏替换原则：子类的对象必须能够替换掉所有父类对象。子类需要能够当成父类来使用，并且需要比父类更加特殊。 接口分离原则：不应该强迫客户依赖于它们不用的方法。 依赖倒置原则：高层模块不应该依赖于底层模块；二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。 迪米特法则：最少">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-28T05:17:53.467Z">
+<meta property="article:modified_time" content="2020-02-28T15:35:16.901Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -152,184 +154,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java设计原则" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java设计原则
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="archive-article-date">
+
+        
+        <a href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="archive-article-date">
   	<time datetime="2020-02-28T05:17:53.467Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">Java设计原则</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><p><strong>单一职责原则</strong>：修改类的原因应该只有一个，一个类只负责一个事。</p>
+<p><strong>开放封闭原则</strong>：类应该对扩展开放，对修改关闭。</p>
+<p><strong>里氏替换原则</strong>：子类的对象必须能够替换掉所有父类对象。子类需要能够当成父类来使用，并且需要比父类更加特殊。</p>
+<p><strong>接口分离原则</strong>：不应该强迫客户依赖于它们不用的方法。</p>
+<p><strong>依赖倒置原则</strong>：<strong>高层模块不应该依赖于底层模块</strong>；二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。</p>
+<p><strong>迪米特法则</strong>：最少知识原则，一个对象对其他对象有尽可能少的了解，不和陌生人说话。</p>
+<p><strong>合成复用原则</strong>：尽量使用对象组合，而不是通过继承来达到复用的目的。</p>
+<blockquote>
+<p>  <strong>共同封闭原则</strong>：一起的类应该组合在一起(同一个包里)，如果必须修改应用程序里的代码，我们希望所有的修改都发生在一个包里（修改关闭），而不是遍布在很多包里。</p>
+<p>  <strong>稳定抽象原则</strong>：最稳定的包应该是最抽象的包，不稳定的包是具体的包，即包的抽象程度跟它的稳定性成正比。</p>
+<p>  <strong>稳定依赖原则</strong>：包之间的依赖关系都应该是稳定方向的依赖，包要依赖的包要比自己更具有稳定性。</p>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/" class="archive-article-date">
-  	<time datetime="2020-02-28T02:25:36.021Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础复习(3)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">Java基础复习(3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计原则"><span class="toc-number">1.</span> <span class="toc-text">设计原则</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/" class="archive-article-date">
-  	<time datetime="2020-02-28T01:45:01.779Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/">Java基础复习(2)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/27/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6(%E4%B8%80)/" class="archive-article-date">
-  	<time datetime="2020-02-27T13:21:29.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/27/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6(%E4%B8%80)/">Java集合框架(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/" class="archive-article-date">
-  	<time datetime="2020-02-27T03:44:58.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">Java基础复习(1)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/" class="archive-article-date">
-  	<time datetime="2020-02-26T15:48:32.285Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/26/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F(1)/">单例模式(1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -352,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
