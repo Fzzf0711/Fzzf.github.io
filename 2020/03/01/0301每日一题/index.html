@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一道题引发的学习 | Fzzf的博客</title>
+  <title>0301每日一题 | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="例题来源：ssrcoder 假设如下代码中，若t1线程在t2线程启动之前已经完成启动。代码的输出是（）  1234567891011121314151617181920212223242526272829303132package com.fzzf;public class Main&amp;#123;    public static void main(String[] args) throws Ex">
+  <meta name="description" content="例题来源：ssrcoder 以下代码的输出结果是？ 123456789101112131415public class Main&amp;#123;    public  static  Main t1 &#x3D; new Main();    public  static  Main t2 &#x3D; new Main();    &amp;#123;        System.out.println(&quot;构造块&quot;);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一道题引发的学习">
-<meta property="og:url" content="http://yoursite.com/2020/02/29/%E4%B8%80%E9%81%93%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="0301每日一题">
+<meta property="og:url" content="http://yoursite.com/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="例题来源：ssrcoder 假设如下代码中，若t1线程在t2线程启动之前已经完成启动。代码的输出是（）  1234567891011121314151617181920212223242526272829303132package com.fzzf;public class Main&amp;#123;    public static void main(String[] args) throws Ex">
+<meta property="og:description" content="例题来源：ssrcoder 以下代码的输出结果是？ 123456789101112131415public class Main&amp;#123;    public  static  Main t1 &#x3D; new Main();    public  static  Main t2 &#x3D; new Main();    &amp;#123;        System.out.println(&quot;构造块&quot;);">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-29T13:41:19.126Z">
-<meta property="article:modified_time" content="2020-02-29T14:51:49.903Z">
+<meta property="article:published_time" content="2020-03-01T14:10:57.508Z">
+<meta property="article:modified_time" content="2020-03-01T15:29:29.220Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 7
+            总文章数 8
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -154,20 +154,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一道题引发的学习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-0301每日一题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一道题引发的学习
+      0301每日一题
     </h1>
   
 
         
-        <a href="/2020/02/29/%E4%B8%80%E9%81%93%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-02-29T13:41:19.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
+        <a href="/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-03-01T14:10:57.508Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
 </a>
         
       </header>
@@ -175,30 +175,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>来源：ssrcoder</p>
-<p>假设如下代码中，若t1线程在t2线程启动之前已经完成启动。代码的输出是（） </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fzzf;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">                    <span class="keyword">try</span>&#123;</span><br><span class="line">                        obj.wait();</span><br><span class="line">                        System.out.println(<span class="string">"thread 1 wake up."</span>);</span><br><span class="line">                    &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        t1.start();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">                    obj.notifyAll();</span><br><span class="line">                    System.out.println(<span class="string">"thread 2 sent notify"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以下代码的输出结果是？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span>  Main t1 = <span class="keyword">new</span> Main();</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span>  Main t2 = <span class="keyword">new</span> Main();</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"构造块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line"></span><br><span class="line">        Main t = <span class="keyword">new</span> Main();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>A.Thread 1 wake up</strong><br>    <strong>Thread 2 sent notify.</strong><br><strong>B.Thread 2 sent notify.</strong><br>    <strong>Thread 1 wake up</strong><br><strong>C.A、B皆有可能</strong><br><strong>D.程序无输出卡死</strong></p>
-<a id="more"></a>
-
-<h2 id="线程间协作：wait-，-notify，-notifyAll"><a href="#线程间协作：wait-，-notify，-notifyAll" class="headerlink" title="线程间协作：wait ，  notify， notifyAll"></a>线程间协作：wait ，  notify， notifyAll</h2><p>在 Java 中，可以通过配合调用 Object 对象的 wait() 方法和 notify()方法或 notifyAll()   方法来实现线程间的通信。在线程中调用 wait() 方法，将阻塞等待其他线程的通知（其他线程调用 notify() 方法或   notifyAll() 方法），在线程中调用 notify() 方法或 notifyAll() 方法，将通知其他线程从 wait() 方法处返回。</p>
-<p>Object 是所有类的超类，它有 5   个方法组成了等待/通知机制的核心：notify()、notifyAll()、wait()、wait(long)和   wait(long，int)。在 Java 中，所有的类都从 Object   继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为 final，因此<strong>在子类中不能覆写任何一个方法</strong>。</p>
-<h2 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.wait(<span class="number">0L</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> var1)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> timeoutMillis, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timeoutMillis &lt; <span class="number">0L</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeoutMillis value is negative"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nanos &gt;= <span class="number">0</span> &amp;&amp; nanos &lt;= <span class="number">999999</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nanos &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            ++timeoutMillis;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.wait(timeoutMillis);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"nanosecond timeout value out of range"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>该方法用来将当前线程置入休眠状态，直到接到通知或被中断为止。在调用   wait()之前，线程必须要获得该对象的对象级别锁，即只能在同步方法或同步块中调用 wait()方法。进入   wait()方法后，当前线程释放锁。在从 wait()返回前，线程与其他线程竞争重新获得锁。如果调用   wait()时，没有持有适当的锁，则抛出 IllegalMonitorStateException，它是 RuntimeException   的一个子类，因此，不需要 try-catch 结构。  </p>
-<h2 id="notify"><a href="#notify" class="headerlink" title="notify()"></a>notify()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HotSpotIntrinsicCandidate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notify</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>该方法也要在同步块中调用，即在调用前，线程也必须要获得该对象的对象级别锁，如果调用notify()时没有持有适当的锁，也会抛出 IllegalMonitorStateException。</p>
-<p>该方法用来通知那些可能等待该对象的对象锁的其他线程。如果有多个线程等待，则线程规划器任意挑选出其中一个   wait()状态的线程来发出通知，并使它等待获取该对象的对象锁（notify 后，当前线程不会马上释放该对象锁，wait   所在的线程并不能马上获取该对象锁，要等到程序退出 synchronized   代码块后，当前线程才会释放锁，wait所在的线程也才可以获取该对象锁），但不惊动其他同样在等待被该对象notify的线程们。  </p>
-<p>当第一个获得了该对象锁的wait线程运行完毕以后，它会释放掉对象锁，此时如果该对象没有再次使用 notify 语句，则即便该对象已经空闲，其他 wait   状态等待的线程由于没有得到该对象的通知，会继续阻塞在 wait 状态，直到这个对象发出一个 notify 或   notifyAll。</p>
-<h2 id="notifyAll"><a href="#notifyAll" class="headerlink" title="notifyAll()"></a>notifyAll()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HotSpotIntrinsicCandidate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notifyAll</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>该方法与 notify ()方法的工作方式相同，重要的一点差异是：</p>
-<p>notifyAll 使所有原来在该对象上 wait 的线程统统退出 wait 的状态（即全部被唤醒，不再等待 notify 或   notifyAll，但由于此时还没有获取到该对象锁，因此还不能继续往下执行），变成等待获取该对象上的锁，一旦该对象锁被释放（notifyAll   线程退出调用了 notifyAll 的 synchronized   代码块的时候），他们就会去竞争。如果其中一个线程获得了该对象锁，它就会继续往下执行，在它退出 synchronized 代码块，释放锁后，其他的已经被唤醒的线程将会继续竞争获取该锁，一直进行下去，直到所有被唤醒的线程都执行完毕。</p>
-<h2 id="回到本题："><a href="#回到本题：" class="headerlink" title="回到本题："></a>回到本题：</h2><p>执行obj.wait()； 已经释放锁；所以t2可以再次获取到obj；唤醒t1，等到t2执行完毕，释放锁后再继续执行t1。</p>
-<p>因此输出如下：</p>
-<p><code>thread 2 sent notify</code><br><code>thread 1 wake up.</code></p>
-<p>所以选择B项。</p>
+<ul>
+<li><strong>A.静态块 构造块 构造块 构造块</strong><br><strong>B.构造块 静态块 构造块 构造块</strong><br><strong>C.构造块 构造块 静态块 构造块</strong><br><strong>D.构造块 构造块 构造块 静态块</strong></li>
+</ul>
+<ul>
+<li><h2 id="执行顺序：静态代码块-gt-构造代码块-gt-构造方法"><a href="#执行顺序：静态代码块-gt-构造代码块-gt-构造方法" class="headerlink" title="执行顺序：静态代码块&gt;构造代码块&gt;构造方法"></a>执行顺序：静态代码块&gt;构造代码块&gt;构造方法</h2></li>
+</ul>
+<p>理由：静态代码块（<strong>static{}</strong>）在类加载的时候执行一次。 </p>
+<p>​             构造代码块（<strong>{}内的部分</strong>）在每一次创建对象时执行，始终在构造方法前执行。 </p>
+<p>​              构造方法在新建对象时调用（   就是<strong>new的时候</strong>      ）。 </p>
+<p> 注意： <strong>a.静态代码块在类加载的时候就执行，所以它的优先级高于入口main()方法。</strong> </p>
+<p>​              b.当三种形式不止一次出现，同优先级是按照先后顺序执行。</p>
+<p>​              c.静态域中包含静态变量、静态块和静态方法,其中需要初始化的是静态变量和静态块.而他们两个的初始化顺序是靠他们俩的位置决定的</p>
+<p>​        首先加载类B，执行静态域的第一个静态变量，static b1=new B，输出构造块和构造方法（空）。<strong>因为执行了静态变量的初始化，意味着已经加载了B的静态域的一部分，这时候不能再加载另一个静态域了，否则属于重复加载 了</strong>（静态域必须当成一个整体来看待。否则加载会错乱）   于是，依次static b2 =new B，输出构造块，再执行静态块，完成对整个静态域的加载，再执行main方法，new b，输出构造块。  </p>
+<p>因此会先打印两个“构造块”，接着在执行执行静态代码块，打印静态块；最后再打印一个“构造块”。</p>
 
       
 
@@ -278,7 +271,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/29/%E4%B8%80%E9%81%93%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,8 +286,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java设计原则</div>
+    <a href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">0229每日一题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -321,7 +314,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#例题"><span class="toc-number">1.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程间协作：wait-，-notify，-notifyAll"><span class="toc-number">2.</span> <span class="toc-text">线程间协作：wait ，  notify， notifyAll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wait"><span class="toc-number">3.</span> <span class="toc-text">wait()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notify"><span class="toc-number">4.</span> <span class="toc-text">notify()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notifyAll"><span class="toc-number">5.</span> <span class="toc-text">notifyAll()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回到本题："><span class="toc-number">6.</span> <span class="toc-text">回到本题：</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#例题"><span class="toc-number">1.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行顺序：静态代码块-gt-构造代码块-gt-构造方法"><span class="toc-number">2.</span> <span class="toc-text">执行顺序：静态代码块&gt;构造代码块&gt;构造方法</span></a></li></ol>
                     </div>
                 </span>
             </div>

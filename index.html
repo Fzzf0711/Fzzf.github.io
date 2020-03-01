@@ -65,7 +65,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 7
+            总文章数 8
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -154,19 +154,99 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-一道题引发的学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-0301每日一题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/%E4%B8%80%E9%81%93%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E5%AD%A6%E4%B9%A0/">一道题引发的学习</a>
+      <a class="article-title" href="/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">0301每日一题</a>
     </h1>
   
 
         
-        <a href="/2020/02/29/%E4%B8%80%E9%81%93%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+        <a href="/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-03-01T14:10:57.508Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>来源：ssrcoder</p>
+<p>以下代码的输出结果是？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span>  Main t1 = <span class="keyword">new</span> Main();</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span>  Main t2 = <span class="keyword">new</span> Main();</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"构造块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line"></span><br><span class="line">        Main t = <span class="keyword">new</span> Main();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>A.静态块 构造块 构造块 构造块</strong><br><strong>B.构造块 静态块 构造块 构造块</strong><br><strong>C.构造块 构造块 静态块 构造块</strong><br><strong>D.构造块 构造块 构造块 静态块</strong></li>
+</ul>
+<ul>
+<li><h2 id="执行顺序：静态代码块-gt-构造代码块-gt-构造方法"><a href="#执行顺序：静态代码块-gt-构造代码块-gt-构造方法" class="headerlink" title="执行顺序：静态代码块&gt;构造代码块&gt;构造方法"></a>执行顺序：静态代码块&gt;构造代码块&gt;构造方法</h2></li>
+</ul>
+<p>理由：静态代码块（<strong>static{}</strong>）在类加载的时候执行一次。 </p>
+<p>​             构造代码块（<strong>{}内的部分</strong>）在每一次创建对象时执行，始终在构造方法前执行。 </p>
+<p>​              构造方法在新建对象时调用（   就是<strong>new的时候</strong>      ）。 </p>
+<p> 注意： <strong>a.静态代码块在类加载的时候就执行，所以它的优先级高于入口main()方法。</strong> </p>
+<p>​              b.当三种形式不止一次出现，同优先级是按照先后顺序执行。</p>
+<p>​              c.静态域中包含静态变量、静态块和静态方法,其中需要初始化的是静态变量和静态块.而他们两个的初始化顺序是靠他们俩的位置决定的</p>
+<p>​        首先加载类B，执行静态域的第一个静态变量，static b1=new B，输出构造块和构造方法（空）。<strong>因为执行了静态变量的初始化，意味着已经加载了B的静态域的一部分，这时候不能再加载另一个静态域了，否则属于重复加载 了</strong>（静态域必须当成一个整体来看待。否则加载会错乱）   于是，依次static b2 =new B，输出构造块，再执行静态块，完成对整个静态域的加载，再执行main方法，new b，输出构造块。  </p>
+<p>因此会先打印两个“构造块”，接着在执行执行静态代码块，打印静态块；最后再打印一个“构造块”。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-0229每日一题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">0229每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="archive-article-date">
   	<time datetime="2020-02-29T13:41:19.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
 </a>
         
@@ -191,7 +271,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/29/%E4%B8%80%E9%81%93%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">展开全文 >></a>
         </p>
       
 
