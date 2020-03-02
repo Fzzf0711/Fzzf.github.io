@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-01T15:29:29.220Z</updated>
+  <updated>2020-03-02T11:47:28.678Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文翻译</title>
+    <link href="http://yoursite.com/2020/03/02/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    <id>http://yoursite.com/2020/03/02/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/</id>
+    <published>2020-03-02T10:39:48.322Z</published>
+    <updated>2020-03-02T11:47:28.678Z</updated>
+    
+    <content type="html"><![CDATA[<p>A Little Annotation does a Lot of Good:<br>A Study in Bootstrapping Low-resource Named Entity Recognizers 译文</p><h1 id="一点标注有很多好处：低资源的命名实体识别研究"><a href="#一点标注有很多好处：低资源的命名实体识别研究" class="headerlink" title="一点标注有很多好处：低资源的命名实体识别研究"></a>一点标注有很多好处：低资源的命名实体识别研究</h1><p>卡内基梅隆大学语言技术研究所</p><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，现在有几种提议的方法，涉及跨语言的迁移学习（从其他资源丰富的语言中学习）或主动学习，该方法基于模型预测有效地选择有效的训练数据。 本文提出了一个问题：鉴于最近的进展，以及有限的人工注释，以资源不足的语言有效创建高质量实体识别器的最有效方法是什么？基于使用模拟和真实人类注释的广泛实验，我们找到了最好的双重策略方法，首先是使用跨语言传输模型，然后仅对目标语言中不确定的实体范围执行目标注释，从而最大程度地减少注释者的工作量。 结果表明，当可以注释很少的数据时，跨语言传输是一种强大的工具，但是以实体为目标的标注策略只需训练数据的十分之一即可快速实现竞争准确性。 本方法的代码可在此处公开获得。</p><a id="more"></a><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>命名实体识别（NER）的任务是检测文本中的命名实体并将其分类为一组固定的预定义类别（人员，位置等），并具有多个下游应用程序，包括机器读取（Chen等，2017）实体和事件的共同引用（Yang和Mitchell，2016）以及文本挖掘（Han和Sun，2012）。深度学习的最新进展已在许多序列标记任务（包括NER）上取得了最先进的表现（Collobert等，2011; Ma and Hovy，2016; Lample等，2016; Peters等，2018）。但是，这些模型的性能高度依赖于大量带注释的数据的可用性，因此，对于资源少于英语的语言，其准确性明显较低。在这项工作中，我们提出了一个问题：“我们如何才能有效地帮助一稿高质量的命名实体识别器，用于低资源语言，并且只有少量的人类努力？具体来说，我们利用低资源语言数据高效学习的最新进展，提出了以下引导低资源实体识别器的”配方”：首先，我们使用跨语言迁移学习（Yarowsky等人，2001； Ammar等人等人（2016年），将在另一种语言上训练的模型应用于资源匮乏的语言，以提供良好的初步模型来启动引导过程。具体来说，我们使用谢等人的模型。（2018），报告对多种语言对的强劲结果。接下来，在这种迁移模型的基础上，我们进一步采用主动学习（Settles和Craven，2008； Marchegigiani和Artieres，2014），这通过使用模型预测为人类注释者选择信息性而非随机数据来帮助提高注释效率。最后，根据使用主动学习获得的数据对模型进行微调，以提高目标语言的准确性。</p><p>​    在此配方中，选择用于在主动学习中选择和标注数据的特定方法对于最大限度地减少人工工作非常重要。 在NER的先前工作中使用的一种相对标准的方法是，根据识别其中的实体的不确定性的标准来选择完整序列（Culotta和McCallum，2005年）。然而，由于通常只关注句子中的单个实体，因此当仅关注句子的一小部分时，标注整个序列仍然是乏味且浪费的（Neubig等人，2011年； Sperber等，2014）。 受此发现启发，并考虑到命名实体既重要又稀疏的事实，我们提出了一种以实体为目标的策略，以节省标注者的工作量。 具体来说，我们选择序列中最可能命名的实体的不确定的令牌子跨度。 这样，标注者只需要将类型分配给选定的子跨度，而不必读取和注释整个序列。 为了应付序列的部分注释，我们在训练过程中仅从带注释的子跨度中学习使用条件随机字段（CRF）的约束版本，即部分CRF（Tsuboi等，2008年； Wanvarie等，2011）。</p><p>​    为了评估我们的实验方法，我们用5种语言进行了模拟的主动学习实验：西班牙语、荷兰语、德语、印地语和印度尼西亚语。此外，为了在更实际的环境中研究我们的方法，我们对两个低资源语言（印度尼西亚语和印地语）和一种模拟低资源语言西班牙语进行了人工注释实验。总之，本文作出以下贡献：</p><p>1.我们提出了改进低资源 NER 的引导配方。只需使用十分之一的标记，我们提议的 entity 定向主动学习方法可在所有活动学习基线中提供最佳结果，平均改进为 9.9 F1。</p><p>2.通过模拟实验，我们证明，跨语言传输是一个强大的工具，在仅对十分之一的标记进行批过时，比未传输系统在F1值上平均高8.6。</p><p>3.人工注释实验表明，在使用实体目标策略（而不是完整序列注释）时，注释者在注释实体方面更准确。此外，T 他的策略通过要求它们标记的标记比全序列注释更少的标记来最小化注释器工作量。</p><h2 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h2><p>如导言所述，我们的引导食谱由三个部分组成：（1）跨语言迁移学习；（2）主动学习以选择要标注的数据的相关（3）在这些带注释的线段上对模型进行微调。 继续步骤（2）和（3），直到模型达到可接受的准确性水平，或者直到我们用完注释预算为止。 系统概述如图1所示。在以下各节中，我们将详细描述这三个步骤。</p><p>​        <img src="http://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/1583147204947.png" alt="">                                                                                                    </p><p>图1：我们建议的配方：跨语言传输用于从英语标签投射标注将数据集转换为目标语言。 然后，以实体为目标的主动学习用于选择内容丰富的子跨度，可能是人类要标注的实体。 最后，在此部分标记的数据集上对NER模型进行微调。</p><h3 id="2-1跨语言迁移学习"><a href="#2-1跨语言迁移学习" class="headerlink" title="2.1跨语言迁移学习"></a>2.1跨语言迁移学习</h3><p>跨语言学习的目标是让接受过源语言培训的识别器进行迁移将其转换为目标语言。 我们这样做的NER方法效仿Xie等.（2018），我们在本节中进行简要回顾。</p><p>首先，我们假设访问两组预先训练的单语单词嵌入在源语言和目标语言中，X   和 <em>Y，</em>一个小型双语词典，以无监督的方式提供或获取（Artetxe 等人）。2017;康纳等人  ，2017a），并在源语言中标记训练数据。利用这些资源，我们训练双语单词嵌入（BWE） 以创建一个单词对单词的翻译字典，最后使用此字典将源训练数据转换为目标language，我们用它来训练 NER 模型。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A Little Annotation does a Lot of Good:&lt;br&gt;A Study in Bootstrapping Low-resource Named Entity Recognizers 译文&lt;/p&gt;
+&lt;h1 id=&quot;一点标注有很多好处：低资源的命名实体识别研究&quot;&gt;&lt;a href=&quot;#一点标注有很多好处：低资源的命名实体识别研究&quot; class=&quot;headerlink&quot; title=&quot;一点标注有很多好处：低资源的命名实体识别研究&quot;&gt;&lt;/a&gt;一点标注有很多好处：低资源的命名实体识别研究&lt;/h1&gt;&lt;p&gt;卡内基梅隆大学语言技术研究所&lt;/p&gt;
+&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，现在有几种提议的方法，涉及跨语言的迁移学习（从其他资源丰富的语言中学习）或主动学习，该方法基于模型预测有效地选择有效的训练数据。 本文提出了一个问题：鉴于最近的进展，以及有限的人工注释，以资源不足的语言有效创建高质量实体识别器的最有效方法是什么？基于使用模拟和真实人类注释的广泛实验，我们找到了最好的双重策略方法，首先是使用跨语言传输模型，然后仅对目标语言中不确定的实体范围执行目标注释，从而最大程度地减少注释者的工作量。 结果表明，当可以注释很少的数据时，跨语言传输是一种强大的工具，但是以实体为目标的标注策略只需训练数据的十分之一即可快速实现竞争准确性。 本方法的代码可在此处公开获得。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SQL语言基础（持续更新）</title>
+    <link href="http://yoursite.com/2020/03/02/SQL%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/03/02/SQL%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</id>
+    <published>2020-03-02T05:44:50.761Z</published>
+    <updated>2020-03-02T05:52:38.233Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注释</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> mytable; <span class="comment">-- 注释</span></span><br><span class="line"><span class="comment">/* 注释1</span></span><br><span class="line"><span class="comment">   注释2 */</span></span><br></pre></td></tr></table></figure><h3 id="数据库创建以及使用："><a href="#数据库创建以及使用：" class="headerlink" title="数据库创建以及使用："></a>数据库创建以及使用：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">USE</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure><h3 id="创建表："><a href="#创建表：" class="headerlink" title="创建表："></a>创建表：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="comment"># int 类型，不为空，自增</span></span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="comment"># int 类型，不可为空，默认值为 1，不为空</span></span><br><span class="line">  col1 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>,</span><br><span class="line">  <span class="comment"># 变长字符串类型，最长为 45 个字符，可以为空</span></span><br><span class="line">  col2 <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 日期类型，可为空</span></span><br><span class="line">  col3 <span class="built_in">DATE</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 设置主键为 id</span></span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>));</span><br></pre></td></tr></table></figure><h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><h4 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE mytable</span><br><span class="line">ADD col CHAR(20);</span><br></pre></td></tr></table></figure><h4 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE mytable</span><br><span class="line">DROP COLUMN col;</span><br></pre></td></tr></table></figure><h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> mytable;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;注释：&quot;&gt;&lt;a href=&quot;#注释：&quot; class=&quot;headerlink&quot; title=&quot;注释：&quot;&gt;&lt;/a&gt;注释：&lt;/h3&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;spa
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>0301每日一题</title>
