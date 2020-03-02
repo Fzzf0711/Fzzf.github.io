@@ -8,16 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>论文翻译 | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A Little Annotation does a Lot of Good:A Study in Bootstrapping Low-resource Named Entity Recognizers 译文 一点标注有很多好处：低资源的命名实体识别研究卡内基梅隆大学语言技术研究所 摘要大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，">
+  <meta name="description" content="A Little Annotation does a Lot of Good:A Study in Bootstrapping Low-resource Named Entity Recognizers 译文 很少的标注有很多好处：低资源的命名实体识别研究卡内基梅隆大学语言技术研究所 摘要大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文翻译">
 <meta property="og:url" content="http://yoursite.com/2020/03/02/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="A Little Annotation does a Lot of Good:A Study in Bootstrapping Low-resource Named Entity Recognizers 译文 一点标注有很多好处：低资源的命名实体识别研究卡内基梅隆大学语言技术研究所 摘要大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，">
+<meta property="og:description" content="A Little Annotation does a Lot of Good:A Study in Bootstrapping Low-resource Named Entity Recognizers 译文 很少的标注有很多好处：低资源的命名实体识别研究卡内基梅隆大学语言技术研究所 摘要大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/1583147204947.png">
+<meta property="og:image" content="https://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/%E5%85%AC%E5%BC%8F.png">
 <meta property="article:published_time" content="2020-03-02T10:39:48.322Z">
-<meta property="article:modified_time" content="2020-03-02T11:47:28.678Z">
+<meta property="article:modified_time" content="2020-03-02T15:39:17.023Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -177,21 +178,49 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>A Little Annotation does a Lot of Good:<br>A Study in Bootstrapping Low-resource Named Entity Recognizers 译文</p>
-<h1 id="一点标注有很多好处：低资源的命名实体识别研究"><a href="#一点标注有很多好处：低资源的命名实体识别研究" class="headerlink" title="一点标注有很多好处：低资源的命名实体识别研究"></a>一点标注有很多好处：低资源的命名实体识别研究</h1><p>卡内基梅隆大学语言技术研究所</p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，现在有几种提议的方法，涉及跨语言的迁移学习（从其他资源丰富的语言中学习）或主动学习，该方法基于模型预测有效地选择有效的训练数据。 本文提出了一个问题：鉴于最近的进展，以及有限的人工注释，以资源不足的语言有效创建高质量实体识别器的最有效方法是什么？基于使用模拟和真实人类注释的广泛实验，我们找到了最好的双重策略方法，首先是使用跨语言传输模型，然后仅对目标语言中不确定的实体范围执行目标注释，从而最大程度地减少注释者的工作量。 结果表明，当可以注释很少的数据时，跨语言传输是一种强大的工具，但是以实体为目标的标注策略只需训练数据的十分之一即可快速实现竞争准确性。 本方法的代码可在此处公开获得。</p>
+<h1 id="很少的标注有很多好处：低资源的命名实体识别研究"><a href="#很少的标注有很多好处：低资源的命名实体识别研究" class="headerlink" title="很少的标注有很多好处：低资源的命名实体识别研究"></a>很少的标注有很多好处：低资源的命名实体识别研究</h1><p>卡内基梅隆大学语言技术研究所</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，现在有几种提议的方法，涉及跨语言的迁移学习（从其他资源丰富的语言中学习）或主动学习，该方法基于模型预测有效地选择有效的训练数据。 本文提出了一个问题：鉴于最近的进展，以及有限的人工标注，以资源不足的语言有效创建高质量实体识别器的最有效方法是什么？基于使用模拟和真实人类标注的广泛实验，我们找到了最好的双重策略方法，首先是使用跨语言传输模型，然后仅对目标语言中不确定的实体范围执行目标标注，从而最大程度地减少标注者的工作量。 结果表明，当可以标注很少的数据时，跨语言传输是一种强大的工具，但是以实体为目标的标注策略只需训练数据的十分之一即可快速实现竞争准确性。 本方法的代码可在此处公开获得。</p>
 <a id="more"></a>
 
-<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>命名实体识别（NER）的任务是检测文本中的命名实体并将其分类为一组固定的预定义类别（人员，位置等），并具有多个下游应用程序，包括机器读取（Chen等，2017）实体和事件的共同引用（Yang和Mitchell，2016）以及文本挖掘（Han和Sun，2012）。深度学习的最新进展已在许多序列标记任务（包括NER）上取得了最先进的表现（Collobert等，2011; Ma and Hovy，2016; Lample等，2016; Peters等，2018）。但是，这些模型的性能高度依赖于大量带注释的数据的可用性，因此，对于资源少于英语的语言，其准确性明显较低。在这项工作中，我们提出了一个问题：“我们如何才能有效地帮助一稿高质量的命名实体识别器，用于低资源语言，并且只有少量的人类努力？具体来说，我们利用低资源语言数据高效学习的最新进展，提出了以下引导低资源实体识别器的”配方”：首先，我们使用跨语言迁移学习（Yarowsky等人，2001； Ammar等人等人（2016年），将在另一种语言上训练的模型应用于资源匮乏的语言，以提供良好的初步模型来启动引导过程。具体来说，我们使用谢等人的模型。（2018），报告对多种语言对的强劲结果。接下来，在这种迁移模型的基础上，我们进一步采用主动学习（Settles和Craven，2008； Marchegigiani和Artieres，2014），这通过使用模型预测为人类注释者选择信息性而非随机数据来帮助提高注释效率。最后，根据使用主动学习获得的数据对模型进行微调，以提高目标语言的准确性。</p>
-<p>​    在此配方中，选择用于在主动学习中选择和标注数据的特定方法对于最大限度地减少人工工作非常重要。 在NER的先前工作中使用的一种相对标准的方法是，根据识别其中的实体的不确定性的标准来选择完整序列（Culotta和McCallum，2005年）。然而，由于通常只关注句子中的单个实体，因此当仅关注句子的一小部分时，标注整个序列仍然是乏味且浪费的（Neubig等人，2011年； Sperber等，2014）。 受此发现启发，并考虑到命名实体既重要又稀疏的事实，我们提出了一种以实体为目标的策略，以节省标注者的工作量。 具体来说，我们选择序列中最可能命名的实体的不确定的令牌子跨度。 这样，标注者只需要将类型分配给选定的子跨度，而不必读取和注释整个序列。 为了应付序列的部分注释，我们在训练过程中仅从带注释的子跨度中学习使用条件随机字段（CRF）的约束版本，即部分CRF（Tsuboi等，2008年； Wanvarie等，2011）。</p>
-<p>​    为了评估我们的实验方法，我们用5种语言进行了模拟的主动学习实验：西班牙语、荷兰语、德语、印地语和印度尼西亚语。此外，为了在更实际的环境中研究我们的方法，我们对两个低资源语言（印度尼西亚语和印地语）和一种模拟低资源语言西班牙语进行了人工注释实验。总之，本文作出以下贡献：</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>命名实体识别（NER）的任务是检测文本中的命名实体并将其分类为一组固定的预定义类别（人员，位置等），并具有多个下游应用程序，包括机器读取（Chen等，2017）实体和事件的共同引用（Yang和Mitchell，2016）以及文本挖掘（Han和Sun，2012）。深度学习的最新进展已在许多序列标记任务（包括NER）上取得了最先进的表现（Collobert等，2011; Ma and Hovy，2016; Lample等，2016; Peters等，2018）。但是，这些模型的性能高度依赖于大量带标注的数据的可用性，因此，对于资源少于英语的语言，其准确性明显较低。在这项工作中，我们提出了一个问题：“我们如何才能有效地帮助一稿高质量的命名实体识别器，用于低资源语言，并且只有少量的人类努力？具体来说，我们利用低资源语言数据高效学习的最新进展，提出了以下引导低资源实体识别器的”配方”：首先，我们使用跨语言迁移学习（Yarowsky等人，2001； Ammar等人等人（2016年），将在另一种语言上训练的模型应用于资源匮乏的语言，以提供良好的初步模型来启动引导过程。具体来说，我们使用谢等人的模型。（2018），报告对多种语言对的强劲结果。接下来，在这种迁移模型的基础上，我们进一步采用主动学习（Settles和Craven，2008； Marchegigiani和Artieres，2014），这通过使用模型预测为人类标注者选择信息性而非随机数据来帮助提高标注效率。最后，根据使用主动学习获得的数据对模型进行微调，以提高目标语言的准确性。</p>
+<p>​    在此配方中，选择用于在主动学习中选择和标注数据的特定方法对于最大限度地减少人工工作非常重要。 在NER的先前工作中使用的一种相对标准的方法是，根据识别其中的实体的不确定性的标准来选择完整序列（Culotta和McCallum，2005年）。然而，由于通常只关注句子中的单个实体，因此当仅关注句子的一小部分时，标注整个序列仍然是乏味且浪费的（Neubig等人，2011年； Sperber等，2014）。 受此发现启发，并考虑到命名实体既重要又稀疏的事实，我们提出了一种以实体为目标的策略，以节省标注者的工作量。 具体来说，我们选择序列中最可能命名的实体的不确定的令牌子跨度。 这样，标注者只需要将类型分配给选定的子跨度，而不必读取和标注整个序列。 为了应付序列的部分标注，我们在训练过程中仅从带标注的子跨度中学习使用条件随机字段（CRF）的约束版本，即部分CRF（Tsuboi等，2008年； Wanvarie等，2011）。</p>
+<p>​    为了评估我们的实验方法，我们用5种语言进行了模拟的主动学习实验：西班牙语、荷兰语、德语、印地语和印度尼西亚语。此外，为了在更实际的环境中研究我们的方法，我们对两个低资源语言（印度尼西亚语和印地语）和一种模拟低资源语言西班牙语进行了人工标注实验。总之，本文作出以下贡献：</p>
 <p>1.我们提出了改进低资源 NER 的引导配方。只需使用十分之一的标记，我们提议的 entity 定向主动学习方法可在所有活动学习基线中提供最佳结果，平均改进为 9.9 F1。</p>
 <p>2.通过模拟实验，我们证明，跨语言传输是一个强大的工具，在仅对十分之一的标记进行批过时，比未传输系统在F1值上平均高8.6。</p>
-<p>3.人工注释实验表明，在使用实体目标策略（而不是完整序列注释）时，注释者在注释实体方面更准确。此外，T 他的策略通过要求它们标记的标记比全序列注释更少的标记来最小化注释器工作量。</p>
-<h2 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h2><p>如导言所述，我们的引导食谱由三个部分组成：（1）跨语言迁移学习；（2）主动学习以选择要标注的数据的相关（3）在这些带注释的线段上对模型进行微调。 继续步骤（2）和（3），直到模型达到可接受的准确性水平，或者直到我们用完注释预算为止。 系统概述如图1所示。在以下各节中，我们将详细描述这三个步骤。</p>
+<p>3.人工标注实验表明，在使用实体目标策略（而不是完整序列标注）时，标注者在标注实体方面更准确。此外，T 他的策略通过要求它们标记的标记比全序列标注更少的标记来最小化标注器工作量。</p>
+<h2 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h2><p>如导言所述，我们的引导食谱由三个部分组成：（1）跨语言迁移学习；（2）主动学习以选择要标注的数据的相关（3）在这些带标注的线段上对模型进行微调。 继续步骤（2）和（3），直到模型达到可接受的准确性水平，或者直到我们用完标注预算为止。 系统概述如图1所示。在以下各节中，我们将详细描述这三个步骤。</p>
 <p>​        <img src="http://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/1583147204947.png" alt="">                                                                                                    </p>
 <p>图1：我们建议的配方：跨语言传输用于从英语标签投射标注将数据集转换为目标语言。 然后，以实体为目标的主动学习用于选择内容丰富的子跨度，可能是人类要标注的实体。 最后，在此部分标记的数据集上对NER模型进行微调。</p>
 <h3 id="2-1跨语言迁移学习"><a href="#2-1跨语言迁移学习" class="headerlink" title="2.1跨语言迁移学习"></a>2.1跨语言迁移学习</h3><p>跨语言学习的目标是让接受过源语言培训的识别器进行迁移将其转换为目标语言。 我们这样做的NER方法效仿Xie等.（2018），我们在本节中进行简要回顾。</p>
 <p>首先，我们假设访问两组预先训练的单语单词嵌入在源语言和目标语言中，X   和 <em>Y，</em>一个小型双语词典，以无监督的方式提供或获取（Artetxe 等人）。2017;康纳等人  ，2017a），并在源语言中标记训练数据。利用这些资源，我们训练双语单词嵌入（BWE） 以创建一个单词对单词的翻译字典，最后使用此字典将源训练数据转换为目标language，我们用它来训练 NER 模型。</p>
+<p>为了学习BWE，我们首先通过求解以下目标获得线性映射<em>W：</em> </p>
+<p><em>W*<em>=  = argmink</em>WXD</em>  =<em>YD<em>k</em>F</em>  s.t.<em>WW</em>&gt;  =  <em>I</em>，*</p>
+<p>其中<em>XD*和 *YD</em> 对应于双语词典中的对齐词嵌入。<em>F</em> 表示弗罗贝尼乌斯规范。我们可以首先计算奇异值分解<em>YDT</em>  <em>X D</em>  =  <em>U</em>  P<em>V</em>  &gt;， 并通过采用<em>W</em>=  UV    &gt;求解目标。我们通过线性变换源和目标单语词嵌入U和<em>V，</em>即<em>XU</em>和<em>YV</em>来获得BWE。</p>
+<p>获得 BWE 后，我们使用跨域相似性局部缩放 （CSLS） 指标（Connau 等人） 为 BWE 空间中的每个源字找到最近的邻域目标字。(Conneau  ，2017b），它产生一个单词对单词的翻译字典。我们使用 thi字典将源训练数据翻译成目标语言，只需复制每个单词的标签，即可生成以目标语言传输的训练数据。我们基于此传输的数据训练 NER 模型作为初步模型。展望未来，我们将跨语言传输数据的使用称为 CT。</p>
+<h3 id="2-2实体目标活动学习"><a href="#2-2实体目标活动学习" class="headerlink" title="2.2实体目标活动学习"></a>2.2实体目标活动学习</h3><p>使用跨语言转移学习训练模型后，我们基于该模型的输出开始主动学习过程。首先，我们使用上述模型的输出作为训练数据，对 NER 模型进行训练。使用这个经过训练的模型，我们提出的以实体为目标的活动学习策略（称为 ETAL）然后从未标记序列的<em>D</em> 体中选择信息最丰富的范围。给定未标记的序列，ETAL首先选择一个令牌的范围从   <em>ji</em>  =  <em>si</em>  |<em>sj*这样 s  *ji</em> 是一个可能的命名实体，其中 <em>i，j</em>  = {0}<em>s</em>|.然后，为了获得跨 D 的高度信息范围，ETAL计算 <em>D</em> 中span <em>ji</em>每次发生的熵 <em>H，</em>然后将它们聚合到整个主体<em>D</em>上，给出：</p>
+<p><em>H<strong>聚合<em>（</em>与</strong>它<em>） =X *H</em>（<em>x*</em>ji<em>）1（</em>x**ji</em> = <em>s**）</em></p>
+<p><em>x**ji-D</em>    </p>
+<p>其中<em>x</em>是<em>D</em>中的未标记序列。最后，选择具有最高聚合不确定性<em>H聚合<em>的跨度</em>ji</em> 进行手动标注。</p>
+<p>现在，我们描述了计算 H （<em>xji<em>）的过程，这是一个范围</em>xji<em>的熵，可能是一个实体。给定一个未标记的序列x，</em>训练的 NER 模型 <em>用于计算边际概率 *p=</em>（y*i</em>=<strong>x</strong>）每个令牌 <em>xi<em>跨所有可能的标签 <em>yi</em></em>Y</em> 使用前向后向算法（Rabiner， 1989），其中 <em>Y</em> 是所有标签的集。使用这些边际值，我们计算给定范围<em>xji</em> 的熵，如算法 1所示。</p>
+<p><img src="https://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/%E5%85%AC%E5%BC%8F.png" alt=""></p>
+<p>让<em>B</em> 表示指示实体开头的标签集，I   表示实体内部的标签集，O   表示实体外部的标签集。首先，我们计算一个范围<em>xji</em> 成为实体的概率，从令牌 <em>i</em>开始，通过边缘化 <em>p=<em>（y</em>i</em>|<strong>x</strong>）在<em>B</em>中的所有标签上，表示为 <em>pij范围<em>。由于实体可以跨越多个令牌，因此，对于作为该实体的一部分，我们将</em>p=<em>（y</em>j</em>|<strong>x</strong>） 在I的所有标签，并结合它与<em>pij跨度<em>。最后，我们计算</em>p**实体</em> =  <em>p**ijspan</em>  =  <em>p<strong>=<em>（</em>O</strong>j</em>=<strong>x**</strong>），*<em>表示可能实体的结束。由于我们使用边际概率来计算 *p实体</em>，它已经在标记之间的转换概率中考虑了。</p>
+<p>因此，任何无效序列（如<em>BPERIORG*</em>）<em>的分数都很低。由于连续范围具有 ovlapping标记，因此在考虑序列中的所有可能范围时，使用动态规划 （DP） 来计算 *pij范围</em>可以避免指数计算。使用 <em>p实体</em>，我们计算熵 <em>H，</em>并仅考虑大于预定义的阈值 <em>H阈值</em>的跨度。此阈值的原因纯粹是为了计算目的，因为它允许我们丢弃所有具有非常低的实体概率的跨距，从而将实际存储在内存中的跨数保持在较低水平。如前所述，我们在整个未标记集上聚合范围<em>H聚合</em>的熵，从而将不确定采样与对高频实体的偏置相结合。</p>
+<p>使用此策略，我们为每个序列中选择子跨进行标注。标注人员仅指定指定实体类型以分配给所选子跨度，根据需要调整范围边界，然后忽略序列的其余部分，从而节省大量精力。</p>
+<h3 id="2-3训练NER-模型"><a href="#2-3训练NER-模型" class="headerlink" title="2.3训练NER 模型"></a>2.3训练NER 模型</h3><p>利用主动学习中新获得的训练数据，我们尝试改进原始的迁移模型。在本节中，我们首先描述我们的模型架构，并尝试解决：1）如何使用部分标注的序列有效地训练NER模型？ 2）哪种训练方案最适合改进迁移模型？</p>
+<h4 id="2-3-1模型结构"><a href="#2-3-1模型结构" class="headerlink" title="2.3.1模型结构"></a>2.3.1模型结构</h4><p>我们的NER模型是基于Ma和Hovy（2016）的BiLSTM-CNN-CRF模型，包括：字符级CNN，该模型可以捕获子词信息；单词级别的BiLSTM，使用单词嵌入并产生上下文相关的隐藏表示；以及一个线性链CRF层，该层对标签之间的依赖关系进行建模以进行推理。我们使用上述模型对传输的数据训练初始NER模型，并对从主动学习中获取的数据重新训练模型。</p>
+<h4 id="2-3-2-PARTIAL-CRF"><a href="#2-3-2-PARTIAL-CRF" class="headerlink" title="2.3.2 PARTIAL-CRF"></a>2.3.2 PARTIAL-CRF</h4><p>使用基于跨距的策略（如ETAL）进行主动学习，可生成部分标记序列的训练数据集。为了在这些部分标记的序列上训练NER模型，我们从贝勒和麦卡勒姆（2007年）中汲取灵感;筑波等人（2008） 并使用受约束的 CRF 解码器.通常，CRF 计算给定序列 <strong>x</strong>的标签序列 y 的可能性，如下所示：</p>
+<h4 id="2-3-3训练计划"><a href="#2-3-3训练计划" class="headerlink" title="2.3.3训练计划"></a>2.3.3训练计划</h4><p>为了使用新标记的数据改进我们的模型，我们直接根据传输的数据对初始模型进行微调，这些数据基于通过主动学习获得的数据（称为FINETUNE） 进行微调。每次主动学习运行会产生更多标记数据，对此训练过程将再次重复。我们还使用另外两个培训计划比较 NER 性能：CORPUSAUG，在其中，我们根据传输的数据和新获取的数据的串联主体训练模型，以及 CORPUSAUG+FINETUNE，我们另外使用新获得的数据对 CORPUSAUG训练的模型进行微调。</p>
+<h2 id="3-实验"><a href="#3-实验" class="headerlink" title="3 实验"></a>3 实验</h2><h3 id="3-1实验设置"><a href="#3-1实验设置" class="headerlink" title="3.1实验设置"></a>3.1实验设置</h3><p>数据集：第一个评估集包括基准的CoNLL 2002和2003 NER数据集（Tjong Kim Sang，2002； Tjong Kim Sang和De Meulder，2003），用于西班牙语（来自罗曼史家族），荷兰语和德语（如英语，来自日耳曼语系）家庭）。我们将标准语料库拆分用于训练/验证/测试。第二个评估集是针对资源匮乏的环境，在这里我们使用语言数据协会（LDC）发布的印尼语（来自南岛人），印地语（来自印度－雅利安人）和西班牙数据集。训练集，验证集，测试集 通过随机抽样拆分。语料库统计的详细信息在附录§A.1中。</p>
+<p>英文的翻译数据：我们使用与Xie等人所述相同的实验设置和资源。 （2018）获取每种目标语言的英语培训数据的翻译。</p>
+<p>主动学习设置：第2.2节中介绍的s，使用基于 DP 的算法来选择针对长度*&lt;*= 5的所有 n-gram 运行的不确定实体跨度。通过计算英语 train g 数据中实体长度的第 90 个百分位数，近似于此长度。</p>
+<p><em>H*</em>阈值*是设置为 1e-8 的超参数。NER模型超参数的详细信息可在附录 #A.2中找到。</p>
+<h3 id="3-2模拟实验"><a href="#3-2模拟实验" class="headerlink" title="3.2模拟实验"></a>3.2模拟实验</h3><p><strong>设置</strong>：我们使用跨语言传输 （§2.1） 来训练我们的初始 NER 模型，并在目标语言上进行测试。这与谢等人的设置相同。（2018） 并作为我们的基准.然后，我们使用几种主动学习策略来选择数据，以便使用此经过训练的 NER 模型进行手动标注。我们将我们提议的ETAL 策略与以下基线策略进行比较。</p>
+<p><strong>SAL</strong>：选择模型对最可能的标记缺乏信心的整个序列（Culotta和McCallum，2005年）。</p>
+<p><strong>CFEAL</strong>：使用置信度域估计方法（Culotta和McCallum，2004年）选择序列中的最低置信度。</p>
+<p><strong>RAND</strong>：从未标记的集合中随机选择跨度以进行标注。</p>
+<p>在此实验设置中，我们通过对主动学习选择的数据使用金色标签来模拟手动标注。在随后的每次运行中，我们都对200个令牌进行注释，并对到目前为止获取的所有数据微调NER模型，然后将其用于选择用于下一轮标注的数据。</p>
+<h4 id="3-2-1结果"><a href="#3-2-1结果" class="headerlink" title="3.2.1结果"></a>3.2.1结果</h4><p>图2总结了不同实验设置下所有数据集的结果。在注释了200个附加令牌之后，x轴上的每个数据点都对应于NER性能。 CT表示使用跨语言传输的数据来训练初始NER模型，从而既可以启动主动学习过程，又可以对新获取的数据进行NER模型的微调。 PARTIAL-CRF / FULL-CRF表示NER模型中使用的CRF解码器的类型。除非另有说明，否则在本文中，我们报告的是所有主动学习运行的平均结果。个人分数在附录§A.5中报告。</p>
+<p>从图中可以看出，我们建议的配方ETAL + PARTIAL-CRF + CT优于以前的配方优于所有数据集的主动动学习基线。保持CT和PARTIALCRF的其他两个分量不变，我们进行实验，以比较不同的主动学习，用图2中的实线表示。我们看到，ETAL 在 CoNLL 数据集中明显优于其他策略：德语 （+6.1 F1）、西班牙语 （+5.3 F1）、荷兰语 （+6.3F1） 和最不发达国家数据集：印地语 （+9.3 F1）、Indone（+9.0 F1）、西班牙语 （+7.5 F1）在所有运行结束时。此外，即使只有十分之一的带标签的标记，建议的配方也只是（平均）-5.2 F1背后的模型训练使用所有标记的数据，</p>
 
       
 
@@ -314,7 +343,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一点标注有很多好处：低资源的命名实体识别研究"><span class="toc-number">1.</span> <span class="toc-text">一点标注有很多好处：低资源的命名实体识别研究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.2.</span> <span class="toc-text">1.介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-方法"><span class="toc-number">1.3.</span> <span class="toc-text">2.方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1跨语言迁移学习"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1跨语言迁移学习</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#很少的标注有很多好处：低资源的命名实体识别研究"><span class="toc-number">1.</span> <span class="toc-text">很少的标注有很多好处：低资源的命名实体识别研究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.2.</span> <span class="toc-text">1.介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-方法"><span class="toc-number">1.3.</span> <span class="toc-text">2.方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1跨语言迁移学习"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1跨语言迁移学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2实体目标活动学习"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2实体目标活动学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3训练NER-模型"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3训练NER 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1模型结构"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">2.3.1模型结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-PARTIAL-CRF"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">2.3.2 PARTIAL-CRF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3训练计划"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">2.3.3训练计划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-实验"><span class="toc-number">1.4.</span> <span class="toc-text">3 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1实验设置"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1实验设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2模拟实验"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2模拟实验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1结果"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">3.2.1结果</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
