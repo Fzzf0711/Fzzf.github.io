@@ -244,7 +244,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>A Little Annotation does a Lot of Good:<br>A Study in Bootstrapping Low-resource Named Entity Recognizers 译文</p>
-<h1 id="很少的标注有很多好处：低资源的命名实体识别研究"><a href="#很少的标注有很多好处：低资源的命名实体识别研究" class="headerlink" title="很少的标注有很多好处：低资源的命名实体识别研究"></a>很少的标注有很多好处：低资源的命名实体识别研究</h1><p>卡内基梅隆大学语言技术研究所</p>
+<h1 id="一点标注可以带来很多好处：低资源的命名实体识别研究"><a href="#一点标注可以带来很多好处：低资源的命名实体识别研究" class="headerlink" title="一点标注可以带来很多好处：低资源的命名实体识别研究"></a>一点标注可以带来很多好处：低资源的命名实体识别研究</h1><p>卡内基梅隆大学语言技术研究所</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>大多数命名实体识别（NER）的最新模型都依赖于大量标记数据的可用性，这使它们很难扩展到资源较少的新语言。 但是，现在有几种提议的方法，涉及跨语言的迁移学习（从其他资源丰富的语言中学习）或主动学习，该方法基于模型预测有效地选择有效的训练数据。 本文提出了一个问题：鉴于最近的进展，以及有限的人工标注，以资源不足的语言有效创建高质量实体识别器的最有效方法是什么？基于使用模拟和真实人类标注的广泛实验，我们找到了最好的双重策略方法，首先是使用跨语言传输模型，然后仅对目标语言中不确定的实体范围执行目标标注，从而最大程度地减少标注者的工作量。 结果表明，当可以标注很少的数据时，跨语言传输是一种强大的工具，但是以实体为目标的标注策略只需训练数据的十分之一即可快速实现竞争准确性。 本方法的代码可在此处公开获得。</p>
         
       
@@ -313,90 +313,7 @@
 <h3 id="数据库创建以及使用："><a href="#数据库创建以及使用：" class="headerlink" title="数据库创建以及使用："></a>数据库创建以及使用：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">USE</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
 
 <h3 id="创建表："><a href="#创建表：" class="headerlink" title="创建表："></a>创建表：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="comment"># int 类型，不为空，自增</span></span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="comment"># int 类型，不可为空，默认值为 1，不为空</span></span><br><span class="line">  col1 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>,</span><br><span class="line">  <span class="comment"># 变长字符串类型，最长为 45 个字符，可以为空</span></span><br><span class="line">  col2 <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 日期类型，可为空</span></span><br><span class="line">  col3 <span class="built_in">DATE</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 设置主键为 id</span></span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><h4 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE mytable</span><br><span class="line">ADD col CHAR(20);</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE mytable</span><br><span class="line">DROP COLUMN col;</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> mytable;</span><br></pre></td></tr></table></figure>
-
-<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><h4 id="普通插入"><a href="#普通插入" class="headerlink" title="普通插入"></a>普通插入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> mytable(col1, col2)</span><br><span class="line"><span class="keyword">VALUES</span>(val1, val2);</span><br></pre></td></tr></table></figure>
-
-<h4 id="插入检索出来的数据"><a href="#插入检索出来的数据" class="headerlink" title="插入检索出来的数据"></a>插入检索出来的数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> mytable1(col1, col2)</span><br><span class="line"><span class="keyword">SELECT</span> col1, col2</span><br><span class="line"><span class="keyword">FROM</span> mytable2;</span><br></pre></td></tr></table></figure>
-
-<h4 id="将一个表的内容插入到一个新表"><a href="#将一个表的内容插入到一个新表" class="headerlink" title="将一个表的内容插入到一个新表"></a>将一个表的内容插入到一个新表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> newtable <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable;</span><br></pre></td></tr></table></figure>
-
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> mytable</span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">col</span> = val</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>TRUNCATE TABLE</strong> 可以清空表，也就是删除所有行。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> mytable;</span><br></pre></td></tr></table></figure>
-
-<p>使用更新和删除操作时一定要用 WHERE 子句，不然会把整张表的数据都破坏。可以先用 SELECT 语句进行测试，防止错误删除。</p>
-<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><h4 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h4><p>相同值只会出现一次。它作用于所有列，也就是说所有列的值都相同才算相同。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> col1, col2</span><br><span class="line"><span class="keyword">FROM</span> mytable;</span><br></pre></td></tr></table></figure>
-
-<h4 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h4><p>限制返回的行数。可以有两个参数，第一个参数为起始行，从 0 开始；第二个参数为返回的总行数。</p>
-<p>返回前 5 行：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">0</span>, <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
-<li><strong>ASC</strong> ：升序（默认）</li>
-<li><strong>DESC</strong> ：降序</li>
-</ul>
-<p>可以按多个列进行排序，并且为每个列指定不同的排序方式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col1 <span class="keyword">DESC</span>, col2 <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>通配符也是用在过滤语句中，但它只能用于文本字段。</p>
-<ul>
-<li><strong>%</strong> 匹配 &gt;=0 个任意字符；</li>
-<li><strong>_</strong> 匹配 ==1 个任意字符；</li>
-<li><strong>[ ]</strong> 可以匹配集合内的字符，例如 [ab] 将匹配字符 a 或者 b。用脱字符 ^ 可以对其进行否定，也就是不匹配集合内的字符。</li>
-</ul>
-<p>使用 Like 来进行通配符匹配，模糊匹配。</p>
-<h3 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h3><p>在数据库服务器上完成数据的转换和格式化的工作往往比客户端上快得多，并且转换和格式化后的数据量更少的话可以减少网络通信量。</p>
-<p>计算字段通常需要使用 <strong>AS</strong> 来取别名，否则输出的时候字段名为计算表达式。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 * col2 <span class="keyword">AS</span> <span class="keyword">alias</span></span><br><span class="line"><span class="keyword">FROM</span> mytable;</span><br></pre></td></tr></table></figure>
-
-<p><strong>CONCAT()</strong> 用于连接两个字段。许多数据库会使用空格把一个值填充为列宽，因此连接的结果会出现一些不必要的空格，使用 <strong>TRIM()</strong> 可以去除首尾空格。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CONCAT</span>(<span class="keyword">TRIM</span>(col1), <span class="string">'('</span>, <span class="keyword">TRIM</span>(col2), <span class="string">')'</span>) <span class="keyword">AS</span> concat_col</span><br><span class="line"><span class="keyword">FROM</span> mytable;</span><br></pre></td></tr></table></figure>
-
-<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><p>把具有相同的数据值的行放在同一组中。</p>
-<p>可以对同一分组数据使用汇总函数进行处理，例如求分组数据的平均值等。</p>
-<p>指定的分组字段除了能按该字段进行分组，也会自动按该字段进行排序。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">col</span>, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">num</span></span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">col</span>;</span><br></pre></td></tr></table></figure>
-
-<p>GROUP BY 自动按分组字段进行排序，ORDER BY 也可以按汇总字段来进行排序。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">col</span>, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">num</span></span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">col</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">num</span>;</span><br></pre></td></tr></table></figure>
-
-<p>WHERE 过滤行，HAVING 过滤分组，行过滤应当先于分组过滤。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">col</span>, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">num</span></span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">col</span> &gt; <span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">col</span></span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">num</span> &gt;= <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
-<p>分组规定：</p>
-<ul>
-<li>GROUP BY 子句出现在 WHERE 子句之后，ORDER BY 子句之前；</li>
-<li>除了汇总字段外，SELECT 语句中的每一字段都必须在 GROUP BY 子句中给出；</li>
-<li>NULL 的行会单独分为一组；</li>
-<li>大多数 SQL 实现不支持 GROUP BY 列具有可变长度的数据类型。</li>
-</ul>
-<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>子查询中只能返回一个字段的数据。</p>
-<p>可以将子查询的结果作为 where 语句的过滤条件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM mytable1</span><br><span class="line">WHERE col1 IN (SELECT col2</span><br><span class="line">               FROM mytable2);</span><br></pre></td></tr></table></figure>
-
-<p>下面的语句可以检索出客户的订单数量，子查询语句会对第一个查询检索出的每个客户执行一次：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_name, (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*)</span><br><span class="line">                   <span class="keyword">FROM</span> Orders</span><br><span class="line">                   <span class="keyword">WHERE</span> Orders.cust_id = Customers.cust_id)</span><br><span class="line">                   <span class="keyword">AS</span> orders_num</span><br><span class="line"><span class="keyword">FROM</span> Customers</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> cust_name;</span><br></pre></td></tr></table></figure>
-
-<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><p>连接用于连接多个表，使用join关键字，并且条件语句使用ON 而不是WHERE.</p>
-<p>连接可以替换子查询，并且比子查询的效率一般会更快。</p>
-<p>可以用AS给列名，计算字段和表名取名，给表明取别名是为了简化SQL语句以及连接相同的表。</p>
-<h4 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h4><p>内连接又称等值连接，使用 INNER JOIN 关键字。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.value, B.value</span><br><span class="line"><span class="keyword">FROM</span> tablea <span class="keyword">AS</span> A <span class="keyword">INNER</span> <span class="keyword">JOIN</span> tableb <span class="keyword">AS</span> B</span><br><span class="line"><span class="keyword">ON</span> A.key = B.key;</span><br></pre></td></tr></table></figure>
-
-<p>可以不明确使用 INNER JOIN，而使用普通查询并在 WHERE 中将两个表中要连接的列用等值方法连接起来。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.value, B.value</span><br><span class="line"><span class="keyword">FROM</span> tablea <span class="keyword">AS</span> A, tableb <span class="keyword">AS</span> B</span><br><span class="line"><span class="keyword">WHERE</span> A.key = B.key;</span><br></pre></td></tr></table></figure>
-
-
+        
       
 
       
