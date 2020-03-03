@@ -17,8 +17,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/1583147204947.png">
 <meta property="og:image" content="https://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/%E5%85%AC%E5%BC%8F.png">
+<meta property="og:image" content="https://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/figure2.png">
 <meta property="article:published_time" content="2020-03-02T10:39:48.322Z">
-<meta property="article:modified_time" content="2020-03-02T15:39:17.023Z">
+<meta property="article:modified_time" content="2020-03-03T09:40:18.201Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -70,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 10
+            总文章数 11
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -218,9 +219,17 @@
 <p><strong>SAL</strong>：选择模型对最可能的标记缺乏信心的整个序列（Culotta和McCallum，2005年）。</p>
 <p><strong>CFEAL</strong>：使用置信度域估计方法（Culotta和McCallum，2004年）选择序列中的最低置信度。</p>
 <p><strong>RAND</strong>：从未标记的集合中随机选择跨度以进行标注。</p>
-<p>在此实验设置中，我们通过对主动学习选择的数据使用金色标签来模拟手动标注。在随后的每次运行中，我们都对200个令牌进行注释，并对到目前为止获取的所有数据微调NER模型，然后将其用于选择用于下一轮标注的数据。</p>
-<h4 id="3-2-1结果"><a href="#3-2-1结果" class="headerlink" title="3.2.1结果"></a>3.2.1结果</h4><p>图2总结了不同实验设置下所有数据集的结果。在注释了200个附加令牌之后，x轴上的每个数据点都对应于NER性能。 CT表示使用跨语言传输的数据来训练初始NER模型，从而既可以启动主动学习过程，又可以对新获取的数据进行NER模型的微调。 PARTIAL-CRF / FULL-CRF表示NER模型中使用的CRF解码器的类型。除非另有说明，否则在本文中，我们报告的是所有主动学习运行的平均结果。个人分数在附录§A.5中报告。</p>
-<p>从图中可以看出，我们建议的配方ETAL + PARTIAL-CRF + CT优于以前的配方优于所有数据集的主动动学习基线。保持CT和PARTIALCRF的其他两个分量不变，我们进行实验，以比较不同的主动学习，用图2中的实线表示。我们看到，ETAL 在 CoNLL 数据集中明显优于其他策略：德语 （+6.1 F1）、西班牙语 （+5.3 F1）、荷兰语 （+6.3F1） 和最不发达国家数据集：印地语 （+9.3 F1）、Indone（+9.0 F1）、西班牙语 （+7.5 F1）在所有运行结束时。此外，即使只有十分之一的带标签的标记，建议的配方也只是（平均）-5.2 F1背后的模型训练使用所有标记的数据，</p>
+<p>在此实验设置中，我们通过对主动学习选择的数据使用金色标签来模拟手动标注。在随后的每次运行中，我们都对200个令牌进行标注，并对到目前为止获取的所有数据微调NER模型，然后将其用于选择用于下一轮标注的数据。</p>
+<h4 id="3-2-1结果"><a href="#3-2-1结果" class="headerlink" title="3.2.1结果"></a>3.2.1结果</h4><p>图2总结了不同实验设置下所有数据集的结果。在标注了200个附加令牌之后，x轴上的每个数据点都对应于NER性能。 CT表示使用跨语言传输的数据来训练初始NER模型，从而既可以启动主动学习过程，又可以对新获取的数据进行NER模型的微调。 PARTIAL-CRF / FULL-CRF表示NER模型中使用的CRF解码器的类型。除非另有说明，否则在本文中，我们报告的是所有主动学习运行的平均结果。个人分数在附录§A.5中报告。</p>
+<p>从图中可以看出，我们建议的配方ETAL + PARTIAL-CRF + CT优于以前的配方优于所有数据集的主动动学习基线。保持CT和PARTIALCRF的其他两个分量不变，我们进行实验，以比较不同的主动学习，用图2中的实线表示。我们看到，ETAL 在 CoNLL 数据集中明显优于其他策略：德语 （+6.1 F1）、西班牙语 （+5.3 F1）、荷兰语 （+6.3F1） 和最不发达国家数据集：印地语 （+9.3 F1）、Indone（+9.0 F1）、西班牙语 （+7.5 F1）在所有运行结束时。此外，即使只有十分之一的带标注的令牌，建议的配方也仅落后于使用所有标记数据（用SUPERVISED ALL表示）训练的模型平均-5.2 F1。尽管CFEAL也会选择信息范围，但ETAL却胜过它，因为ETAL已优化为选择可能的实体，从而导致更多的实体被标注为印地语（+43），印度尼西亚语（+207），西班牙语-CoNLL（+1579），德语（+906） ），荷兰语（+836），但西班牙文-LDC（-184）除外。尽管在SAL中添加了完全标记的数据，但ETAL却胜过它，因为SAL选择了更长的句子且实体更少：北印度语（-934），印度尼西亚语（-1290），西班牙文LDC（-527），西班牙文CoNLL（-2395），德语（- 2086年），荷兰语（-2213年）。</p>
+<p>从图2中可以看出，多次运行ETAL的性能均优于基线。为了验证这不是测试数据中的随机现象，我们使用配对的自举重采样方法（如Koehn（2004）所示）将SAL，CFEAL，RAND与ETAL进行比较。对于每个系统，我们在随机采样的50％数据上计算F1分数，并在三个主动学习运行中执行10k引导步骤。从表1中可以看出，在600和1200带标注的令牌上，基线明显比ETAL差。</p>
+<p><img src="https://fzzf-blog.oss-cn-beijing.aliyuncs.com/img/figure2.png" alt=""></p>
+<p>图2：在六个数据集中使用FineTune方案训练的NER性能的比较。实线比较了不同的主动学习策略。虚线表示消融实验。 x轴表示带标注的令牌总数，y轴表示F1分数。</p>
+<h4 id="3-2-2-消融研究"><a href="#3-2-2-消融研究" class="headerlink" title="3.2.2 消融研究"></a>3.2.2 消融研究</h4><p>为了研究CT和PARTIAL-CRF在改善NER性能方面的贡献，我们进行了以下消融，在图2中用虚线表示。</p>
+<p>CT：我们观察到从英语传输的数据为NER模型提供了一个良好的开端：69.4（荷兰语），63.0（西班牙语-LDC），65.7（SpanishCoNLL），54.7（德语），45.4（印尼语），45.0（印地语） F1不出所料，跨语言迁移对与英语紧密相关的语言（荷兰语，德语，西班牙语）的帮助更大。对于这种消融，我们训练一个ETAL + PARTIAL-CRF，其中不使用任何传输的数据。因此，要创建种子数据，我们将以目标语言随机标注200个令牌，然后使用ETAL。我们观察到，随着获取更多的域内数据，未转移的设置很快就会接近转移的设置ETAL + PARTIAL-CRF + CT，这表明有效的标注策略可以帮助缩小这两个系统之间的距离，而间隔仅为1000令牌（平均）。</p>
+<p>PARTIAL-CRF：我们研究使用原始CRF（FULL-CRF）代替PARTIALCRF训练带有部分标记数据的效果。由于前者需要完全标记的序列，因此序列中未标注的标记会用模型预测标记。从图2中我们可以看到，与ETAL + PARTIAL-CRF + CT相比，ETAL + FULL-CRF + CT的性能更差（平均-4.1 F1）。这是因为FULL-CRF严重影响了召回，印地语平均为-11.0点，印尼语为-1.4，西班牙语-LDC为-7.4，德语为-3.3，荷兰语为-3.7，西班牙CoNLL为-4.8分。</p>
+<h4 id="3-2-3训练计划比较"><a href="#3-2-3训练计划比较" class="headerlink" title="3.2.3训练计划比较"></a>3.2.3训练计划比较</h4><p>我们针对ETAL尝试了不同的NER培训制度（在第2.3.3节中进行了介绍）。我们观察到，与CORPUSAUG相比，通常微调不仅可以加快训练速度，而且可以提供更好的性能。为了简短起见，我们在图3中比较了两种语言的结果：3荷兰语（英语的亲戚）和印地语（遥远的语言）。我们看到FINETUNE对印地语的表现更好，而CORPUSAUG + FINETUNE对荷兰语的表现更好。这是因为荷兰语与英语密切相关，并且从显式扩充的传输数据中受益最大。而北印度语在类型上与英语相距遥远，而传输的数据则比较嘈杂，因此该模型不会从传输的数据中获得太多收益。卸等人在对德语的实验中也有类似的观察。</p>
+<h3 id="3-3人工标注实验"><a href="#3-3人工标注实验" class="headerlink" title="3.3人工标注实验"></a>3.3人工标注实验</h3><p>设置：我们对印地语，印度尼西亚语和西班牙语进行了人工标注实验，以了解ETAL在实际设置中是否有助于减少标注工作并提高标注质量。我们将ETAL与全序列策略（SAL）进行比较。我们使用六位母语使用者，每种语言两位，对NER任务的熟悉程度不同。为每个标注者提供了练习，以熟悉标注准则和用户界面。每个策略的标注者标注时间为20分钟。对于ETAL，要求标注者对单个范围进行标注，即每个序列都包含一个令牌范围。这涉及分配正确的标签并根据需要调整跨度边界。对于SAL，要求标注者对序列中所有可能的实体进行标注。我们使用ETAL和SAL策略随机化了标注者必须进行标注的顺序。图5说明了标注界面中ETAL策略的人工标注过程。</p>
 
       
 
@@ -314,6 +323,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          缓存概念简介
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/03/02/SQL%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">SQL语言基础（持续更新）</div>
@@ -343,7 +361,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#很少的标注有很多好处：低资源的命名实体识别研究"><span class="toc-number">1.</span> <span class="toc-text">很少的标注有很多好处：低资源的命名实体识别研究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.2.</span> <span class="toc-text">1.介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-方法"><span class="toc-number">1.3.</span> <span class="toc-text">2.方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1跨语言迁移学习"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1跨语言迁移学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2实体目标活动学习"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2实体目标活动学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3训练NER-模型"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3训练NER 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1模型结构"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">2.3.1模型结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-PARTIAL-CRF"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">2.3.2 PARTIAL-CRF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3训练计划"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">2.3.3训练计划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-实验"><span class="toc-number">1.4.</span> <span class="toc-text">3 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1实验设置"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1实验设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2模拟实验"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2模拟实验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1结果"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">3.2.1结果</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#很少的标注有很多好处：低资源的命名实体识别研究"><span class="toc-number">1.</span> <span class="toc-text">很少的标注有很多好处：低资源的命名实体识别研究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.2.</span> <span class="toc-text">1.介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-方法"><span class="toc-number">1.3.</span> <span class="toc-text">2.方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1跨语言迁移学习"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1跨语言迁移学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2实体目标活动学习"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2实体目标活动学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3训练NER-模型"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3训练NER 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1模型结构"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">2.3.1模型结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-PARTIAL-CRF"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">2.3.2 PARTIAL-CRF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3训练计划"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">2.3.3训练计划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-实验"><span class="toc-number">1.4.</span> <span class="toc-text">3 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1实验设置"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1实验设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2模拟实验"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2模拟实验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1结果"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">3.2.1结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-消融研究"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">3.2.2 消融研究</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3训练计划比较"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">3.2.3训练计划比较</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3人工标注实验"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3人工标注实验</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
