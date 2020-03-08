@@ -65,7 +65,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 11
+            总文章数 14
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -153,6 +153,209 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java基础复习(2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/">Java基础复习(2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/" class="archive-article-date">
+  	<time datetime="2020-02-28T01:45:01.779Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="final-static-this-super-关键字总结"><a href="#final-static-this-super-关键字总结" class="headerlink" title="final,static,this,super 关键字总结"></a>final,static,this,super 关键字总结</h1><h2 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h2><p><strong>final关键字主要用在三个地方：变量、方法、类。</strong></p>
+<p><strong>1.对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</strong></p>
+<p>2.<strong>当用final修饰一个类时，表明这个类不能被继承。final类中的所有成员方法都会被隐式地指定为final方法。</strong></p>
+<p>3.使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升（现在的Java版本已经不需要使用final方法进行这些优化了）。类中所有的private方法都隐式地指定为final。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java集合框架(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/27/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6(%E4%B8%80)/">Java集合框架(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/27/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6(%E4%B8%80)/" class="archive-article-date">
+  	<time datetime="2020-02-27T13:21:29.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="说说List-Set-Map三者的区别？"><a href="#说说List-Set-Map三者的区别？" class="headerlink" title="说说List,Set,Map三者的区别？"></a>说说List,Set,Map三者的区别？</h2><p><strong>List：</strong> List接口存储一组不唯一（可以有多个元素引用相同的对象），有序的对象</p>
+<p><strong>Set:</strong> 不允许重复的集合。不会有多个元素引用相同的对象。</p>
+<p><strong>Map:</strong> 使用键值对存储。Map会维护与Key有关联的值。两个Key可以引用相同的对象，但Key不能重复，典型的Key是String类型，但也可以是任何对象。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/27/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6(%E4%B8%80)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java基础复习(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">Java基础复习(1)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/" class="archive-article-date">
+  	<time datetime="2020-02-27T03:44:58.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-为什么Java中只有值传递"><a href="#一-为什么Java中只有值传递" class="headerlink" title="一. 为什么Java中只有值传递"></a>一. 为什么Java中只有值传递</h2><p><strong>Java 程序设计语言总是采用按值调用。也就是说，方法得到的是所有参数值的一个拷贝，也就是说，方法不能修改传递给它的任何参数变量的内容。</strong></p>
+<p><strong><em>example 1</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num1 = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> num2 = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">    swap(num1, num2);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">"num1 = "</span> + num1);</span><br><span class="line">    System.out.println(<span class="string">"num2 = "</span> + num2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">"a = "</span> + a);</span><br><span class="line">    System.out.println(<span class="string">"b = "</span> + b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>result 1</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">20</span></span><br><span class="line">b = <span class="number">10</span></span><br><span class="line">num1 = <span class="number">10</span></span><br><span class="line">num2 = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 swap 方法中，a、b 的值进行交换，并不会影响到 num1、num2。因为，a、b 中的值，只是从 num1、num2 的复制过来的。也就是说，a、b 相当于 num1、num2 的副本，副本的内容无论怎么修改，都不会影响到原件本身。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/27/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(1)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-单例模式(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
