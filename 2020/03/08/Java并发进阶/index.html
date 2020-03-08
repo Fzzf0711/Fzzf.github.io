@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>缓存概念简介 | Fzzf的博客</title>
+  <title>Java并发进阶 | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="缓存特征命中率当某个请求能够通过访问缓存而得到响应时，称为缓存命中。 缓存命中率越高，缓存的利用率也就越高。 最大空间缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。 当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。 淘汰策略FIFO（First In First Out）：先进先出策略，在实时性的场景下，需要经常访问最新的数据，那么就可">
+  <meta name="description" content="synchronized 关键字说一说自己对于 synchronized 关键字的了解synchronized关键字解决的是多个线程之间访问资源的同步性，synchronized关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。 另外，在 Java 早期版本中，synchronized属于重量级锁，效率低下，因为监视器锁（monitor）是依赖于底层的操作系统的 Mutex Lo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="缓存概念简介">
-<meta property="og:url" content="http://yoursite.com/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:title" content="Java并发进阶">
+<meta property="og:url" content="http://yoursite.com/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="缓存特征命中率当某个请求能够通过访问缓存而得到响应时，称为缓存命中。 缓存命中率越高，缓存的利用率也就越高。 最大空间缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。 当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。 淘汰策略FIFO（First In First Out）：先进先出策略，在实时性的场景下，需要经常访问最新的数据，那么就可">
+<meta property="og:description" content="synchronized 关键字说一说自己对于 synchronized 关键字的了解synchronized关键字解决的是多个线程之间访问资源的同步性，synchronized关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。 另外，在 Java 早期版本中，synchronized属于重量级锁，效率低下，因为监视器锁（monitor）是依赖于底层的操作系统的 Mutex Lo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-03T07:12:18.794Z">
-<meta property="article:modified_time" content="2020-03-03T07:36:20.958Z">
+<meta property="article:published_time" content="2020-03-08T12:37:32.005Z">
+<meta property="article:modified_time" content="2020-03-08T15:14:47.947Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -154,79 +154,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-缓存概念简介" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java并发进阶" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      缓存概念简介
+      Java并发进阶
     </h1>
   
 
         
-        <a href="/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2020-03-03T07:12:18.794Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
+        <a href="/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/" class="archive-article-date">
+  	<time datetime="2020-03-08T12:37:32.005Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="缓存特征"><a href="#缓存特征" class="headerlink" title="缓存特征"></a>缓存特征</h2><h3 id="命中率"><a href="#命中率" class="headerlink" title="命中率"></a>命中率</h3><p>当某个请求能够通过访问缓存而得到响应时，称为缓存命中。</p>
-<p>缓存命中率越高，缓存的利用率也就越高。</p>
-<h3 id="最大空间"><a href="#最大空间" class="headerlink" title="最大空间"></a>最大空间</h3><p>缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。</p>
-<p>当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。</p>
-<h3 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h3><p><strong>FIFO（First In First Out）：先进先出策略</strong>，在实时性的场景下，需要经常访问最新的数据，那么就可以使用 FIFO，使得最先进入的数据（最晚的数据）被淘汰。</p>
-<p><strong>LRU（Least Recently Used）：最近最久未使用策略</strong>，优先淘汰最久未使用的数据，也就是上次被访问时间距离现在最久的数据。该策略可以保证内存中的数据都是热点数据，也就是经常被访问的数据，从而保证缓存命中率。</p>
-<p><strong>LFU（Least Frequently Used）：最不经常使用策略</strong>，优先淘汰一段时间内使用次数最少的数据。</p>
+        <h2 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h2><h3 id="说一说自己对于-synchronized-关键字的了解"><a href="#说一说自己对于-synchronized-关键字的了解" class="headerlink" title="说一说自己对于 synchronized 关键字的了解"></a>说一说自己对于 synchronized 关键字的了解</h3><p>synchronized关键字解决的是多个线程之间访问资源的同步性，synchronized关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。</p>
+<p>另外，在 Java 早期版本中，synchronized属于重量级锁，效率低下，因为监视器锁（monitor）是依赖于底层的操作系统的 Mutex Lock 来实现的，Java 的线程是映射到操作系统的原生线程之上的。如果要挂起或者唤醒一个线程，都需要操作系统帮忙完成，而操作系统实现线程之间的切换时需要从用户态转换到内核态，这个状态之间的转换需要相对比较长的时间，时间成本相对较高，这也是为什么早期的 synchronized 效率低的原因。庆幸的是在 Java 6 之后 Java 官方对从 JVM 层面对synchronized 较大优化，所以现在的 synchronized 锁效率也优化得很不错了。<strong>JDK1.6对锁的实现引入了大量的优化，如自旋锁、适应性自旋锁、锁消除、锁粗化、偏向锁、轻量级锁等技术来减少锁操作的开销。</strong></p>
 <a id="more"></a>
 
-<h2 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h2><h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>当 HTTP 响应允许进行缓存时，浏览器会将 HTML、CSS、JavaScript、图片等静态资源进行缓存。</p>
-<h3 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h3><p>网络服务提供商（ISP）是网络访问的第一跳，通过将数据缓存在 ISP 中能够大大提高用户的访问速度。</p>
-<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>反向代理位于服务器之前，请求与响应都需要经过反向代理。通过将数据缓存在反向代理，在用户请求反向代理时就可以直接使用缓存进行响应。</p>
-<h3 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h3><p>使用 Guava Cache 将数据缓存在服务器本地内存中，服务器代码可以直接读取本地内存中的缓存，速度非常快。</p>
-<h3 id="分布式缓存"><a href="#分布式缓存" class="headerlink" title="分布式缓存"></a>分布式缓存</h3><p>使用 Redis、Memcache 等分布式缓存将数据缓存在分布式缓存系统中。</p>
-<p>相对于本地缓存来说，分布式缓存单独部署，可以根据需求分配硬件资源。不仅如此，服务器集群都可以访问分布式缓存，而本地缓存需要在服务器集群之间进行同步，实现难度和性能开销上都非常大。</p>
-<h3 id="数据库缓存"><a href="#数据库缓存" class="headerlink" title="数据库缓存"></a>数据库缓存</h3><p>MySQL 等数据库管理系统具有自己的查询缓存机制来提高查询效率。</p>
-<h3 id="Java-内部的缓存"><a href="#Java-内部的缓存" class="headerlink" title="Java 内部的缓存"></a>Java 内部的缓存</h3><p>Java 为了优化空间，提高字符串、基本数据类型包装类的创建效率，设计了字符串常量池及 Byte、Short、Character、Integer、Long、Boolean 这六种包装类缓冲池。</p>
-<h3 id="CPU-多级缓存"><a href="#CPU-多级缓存" class="headerlink" title="CPU 多级缓存"></a>CPU 多级缓存</h3><p>CPU 为了解决运算速度与主存 IO 速度不匹配的问题，引入了多级缓存结构，同时使用 MESI 等缓存一致性协议来解决多核 CPU 缓存数据一致性的问题。</p>
-<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>内容分发网络（Content distribution network，CDN）是一种互连的网络系统，它利用更靠近用户的服务器从而更快更可靠地将 HTML、CSS、JavaScript、音乐、图片、视频等静态资源分发给用户。</p>
-<p>依靠部署在各地的边缘服务器，通过中心平台的负载均衡，内容分发，，用户就近获取所需内容，降低网络拥塞，提高用户访问相应速度和命中率，关键是内容存储和分发技术。</p>
-<p>归纳起来，CDN具有以下主要功能：</p>
-<p>(1)节省骨干网带宽，减少带宽需求量；  </p>
-<p>(2)提供服务器端加速，解决由于用户访问量大造成的服务器过载问题； </p>
-<p>(3)服务商能使用Web Cache技术在本地缓存用户访问过的Web页面和对象，实现相同对象的访问无须占用主干的出口带宽，并提高用户访问因特网页面的相应时间的需求； </p>
-<p>(4)能克服网站分布不均的问题，并且能降低网站自身建设和维护成本； </p>
-<p>(5)降低“通信风暴”的影响，提高网络访问的稳定性。 </p>
-<p>CDN 主要有以下优点：</p>
-<p>更快地将数据分发给用户；</p>
-<p>通过部署多台服务器，从而提高系统整体的带宽性能；</p>
-<p>多台服务器可以看成是一种冗余机制，从而具有高可用性。</p>
-<h3 id="缓存问题"><a href="#缓存问题" class="headerlink" title="缓存问题"></a>缓存问题</h3><h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p>指的是对某个一定不存在的数据进行请求，该请求将会穿透缓存到达数据库。</p>
-<p>解决方案：</p>
-<p>对这些不存在的数据缓存一个空数据，从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击；</p>
-<p>对这类请求进行过滤，接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；</p>
-<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><p>缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力。</p>
-<p>解决方案：设置热点数据永远不过期。</p>
-<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><p>指的是由于数据没有被加载到缓存中，或者缓存数据在同一时间大面积失效（过期），又或者缓存服务器宕机，导致大量的请求都到达数据库。</p>
-<p>在有缓存的系统中，系统非常依赖于缓存，缓存分担了很大一部分的数据请求。当发生缓存雪崩时，数据库无法处理这么大的请求，导致数据库崩溃。</p>
-<p>解决方案：</p>
-<p>缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。</p>
-<p>如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。</p>
-<p>设置热点数据永远不过期。</p>
-<h4 id="缓存一致性"><a href="#缓存一致性" class="headerlink" title="缓存一致性"></a>缓存一致性</h4><p>缓存一致性要求数据更新的同时缓存数据也能够实时更新。</p>
-<p>解决方案：</p>
-<p>在数据更新的同时立即去更新缓存；</p>
-<p>在读缓存之前先判断缓存是否是最新的，如果不是最新的先进行更新。</p>
-<p>要保证缓存一致性需要付出很大的代价，缓存数据最好是那些对一致性要求不高的数据，允许缓存数据存在一些脏数据。</p>
-<h4 id="缓存-“无底洞”-现象"><a href="#缓存-“无底洞”-现象" class="headerlink" title="缓存 “无底洞” 现象"></a>缓存 “无底洞” 现象</h4><p>指的是为了满足业务要求添加了大量缓存节点，但是性能不但没有好转反而下降了的现象。</p>
-<p>产生原因：缓存系统通常采用 hash 函数将 key 映射到对应的缓存节点，随着缓存节点数目的增加，键值分布到更多的节点上，导致客户端一次批量操作会涉及多次网络操作，这意味着批量操作的耗时会随着节点数目的增加而不断增大。此外，网络连接数变多，对节点的性能也有一定影响。</p>
-<p>解决方案：</p>
-<p>优化批量数据操作命令；</p>
-<p>减少网络通信次数；</p>
-<p>降低接入成本，使用长连接 / 连接池，NIO 等。</p>
+<h3 id="说说自己是怎么使用-synchronized-关键字"><a href="#说说自己是怎么使用-synchronized-关键字" class="headerlink" title="说说自己是怎么使用 synchronized 关键字"></a>说说自己是怎么使用 synchronized 关键字</h3><p><strong>synchronized关键字最主要的三种使用方式：</strong></p>
+<ul>
+<li><strong>修饰实例方法:</strong> 作用于当前对象实例加锁，进入同步代码前要获得当前对象实例的锁</li>
+<li><strong>修饰静态方法:</strong> 也就是给当前类加锁，会作用于类的所有对象实例，因为静态成员不属于任何一个实例对象，是类成员（ static 表明这是该类的一个静态资源，不管new了多少个对象，只有一份）。所以如果一个线程A调用一个实例对象的非静态 synchronized 方法，而线程B需要调用这个实例对象所属类的静态 synchronized 方法，是允许的，不会发生互斥现象，<strong>因为访问静态 synchronized 方法占用的锁是当前类的锁，而访问非静态 synchronized 方法占用的锁是当前实例对象锁</strong>。</li>
+<li><strong>修饰代码块:</strong> 指定加锁对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。</li>
+</ul>
+<p>面试中面试官经常会说：“单例模式了解吗？来给我手写一下！给我解释一下双重检验锁方式实现单例模式的原理呗！”</p>
+<p><strong>双重校验锁实现对象单例（线程安全）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getUniqueInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">//先判断对象是否已经实例过，没有实例化过才进入加锁代码</span></span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//类对象加锁</span></span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，需要注意 uniqueInstance 采用 volatile 关键字修饰也是很有必要。</p>
+<p>uniqueInstance 采用 volatile 关键字修饰也是很有必要的， uniqueInstance = new Singleton(); 这段代码其实是分为三步执行：</p>
+<ol>
+<li>为 uniqueInstance 分配内存空间</li>
+<li>初始化 uniqueInstance</li>
+<li>将 uniqueInstance 指向分配的内存地址</li>
+</ol>
+<p>但是由于 JVM 具有指令重排的特性，执行顺序有可能变成 1-&gt;3-&gt;2。指令重排在单线程环境下不会出现问题，但是在多线程环境下会导致一个线程获得还没有初始化的实例。例如，线程 T1 执行了 1 和 3，此时 T2 调用 getUniqueInstance() 后发现 uniqueInstance 不为空，因此返回 uniqueInstance，但此时 uniqueInstance 还未被初始化。</p>
+<p>使用 volatile 可以禁止 JVM 的指令重排，保证在多线程环境下也能正常运行。</p>
+<h3 id="说说-JDK1-6-之后的synchronized-关键字底层做了哪些优化，"><a href="#说说-JDK1-6-之后的synchronized-关键字底层做了哪些优化，" class="headerlink" title="说说 JDK1.6 之后的synchronized 关键字底层做了哪些优化，"></a>说说 JDK1.6 之后的synchronized 关键字底层做了哪些优化，</h3><p>JDK1.6 对锁的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。</p>
+<p>锁主要存在四种状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。注意锁可以升级不可降级，这种策略是为了提高获得锁和释放锁的效率。</p>
+<p><strong>①偏向锁</strong></p>
+<p><strong>引入偏向锁的目的和引入轻量级锁的目的很像，他们都是为了没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量产生的性能消耗。但是不同是：轻量级锁在无竞争的情况下使用 CAS 操作去代替使用互斥量。而偏向锁在无竞争的情况下会把整个同步都消除掉</strong>。</p>
+<p>偏向锁的“偏”就是偏心的偏，它的意思是会偏向于第一个获得它的线程，如果在接下来的执行中，该锁没有被其他线程获取，那么持有偏向锁的线程就不需要进行同步！关于偏向锁的原理可以查看《深入理解Java虚拟机：JVM高级特性与最佳实践》第二版的13章第三节锁优化。</p>
+<p>但是对于锁竞争比较激烈的场合，偏向锁就失效了，因为这样场合极有可能每次申请锁的线程都是不相同的，因此这种场合下不应该使用偏向锁，否则会得不偿失，需要注意的是，偏向锁失败后，并不会立即膨胀为重量级锁，而是先升级为轻量级锁。</p>
+<p><strong>② 轻量级锁</strong></p>
+<p>倘若偏向锁失败，虚拟机并不会立即升级为重量级锁，它还会尝试使用一种称为轻量级锁的优化手段(1.6之后加入的)。<strong>轻量级锁不是为了代替重量级锁，它的本意是在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量产生的性能消耗，因为使用轻量级锁时，不需要申请互斥量。另外，轻量级锁的加锁和解锁都用到了CAS操作。</strong> </p>
+<p><strong>轻量级锁能够提升程序同步性能的依据是“对于绝大部分锁，在整个同步周期内都是不存在竞争的”，这是一个经验数据。如果没有竞争，轻量级锁使用 CAS 操作避免了使用互斥操作的开销。但如果存在锁竞争，除了互斥量开销外，还会额外发生CAS操作，因此在有锁竞争的情况下，轻量级锁比传统的重量级锁更慢！如果锁竞争激烈，那么轻量级将很快膨胀为重量级锁！</strong></p>
+<p><strong>③ 自旋锁和自适应自旋</strong></p>
+<p>轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段。</p>
+<p>互斥同步对性能最大的影响就是阻塞的实现，因为挂起线程/恢复线程的操作都需要转入内核态中完成（用户态转换到内核态会耗费时间）。</p>
+<p><strong>一般线程持有锁的时间都不是太长，所以仅仅为了这一点时间去挂起线程/恢复线程是得不偿失的。</strong> 所以，虚拟机的开发团队就这样去考虑：“我们能不能让后面来的请求获取锁的线程等待一会而不被挂起呢？看看持有锁的线程是否很快就会释放锁”。<strong>为了让一个线程等待，我们只需要让线程执行一个忙循环（自旋），这项技术就叫做自旋</strong>。</p>
+<p>百度百科对自旋锁的解释：</p>
+<blockquote>
+<p>何谓自旋锁？它是为实现保护共享资源而提出一种锁机制。其实，自旋锁与互斥锁比较类似，它们都是为了解决对某项资源的互斥使用。无论是互斥锁，还是自旋锁，在任何时刻，最多只能有一个保持者，也就说，在任何时刻最多只能有一个执行单元获得锁。但是两者在调度机制上略有不同。对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
+</blockquote>
+<p>自旋锁在 JDK1.6 之前其实就已经引入了，不过是默认关闭的，需要通过<code>--XX:+UseSpinning</code>参数来开启。JDK1.6及1.6之后，就改为默认开启的了。需要注意的是：自旋等待不能完全替代阻塞，因为它还是要占用处理器时间。如果锁被占用的时间短，那么效果当然就很好了！反之，相反！自旋等待的时间必须要有限度。如果自旋超过了限定次数任然没有获得锁，就应该挂起线程。<strong>自旋次数的默认值是10次，用户可以修改–XX:PreBlockSpin来更改</strong>。</p>
+<p>另外,<strong>在 JDK1.6 中引入了自适应的自旋锁。自适应的自旋锁带来的改进就是：自旋的时间不在固定了，而是和前一次同一个锁上的自旋时间以及锁的拥有者的状态来决定，虚拟机变得越来越“聪明”了</strong>。</p>
+<p><strong>④ 锁消除</strong></p>
+<p>锁消除理解起来很简单，它指的就是虚拟机即使编译器在运行时，如果检测到那些共享数据不可能存在竞争，那么就执行锁消除。锁消除可以节省毫无意义的请求锁的时间。</p>
+<p><strong>⑤ 锁粗化</strong></p>
+<p>原则上，我们在编写代码的时候，总是推荐将同步块的作用范围限制得尽量小，——直在共享数据的实际作用域才进行同步，这样是为了使得需要同步的操作数量尽可能变小，如果存在锁竞争，那等待线程也能尽快拿到锁。</p>
+<p>大部分情况下，上面的原则都是没有问题的，但是如果一系列的连续操作都对同一个对象反复加锁和解锁，那么会带来很多不必要的性能消耗。</p>
+<h3 id="谈谈-synchronized和ReentrantLock-的区别"><a href="#谈谈-synchronized和ReentrantLock-的区别" class="headerlink" title="谈谈 synchronized和ReentrantLock 的区别"></a>谈谈 synchronized和ReentrantLock 的区别</h3><p><strong>① 两者都是可重入锁</strong></p>
+<p>两者都是可重入锁。“可重入锁”概念是：自己可以再次获取自己的内部锁。比如一个线程获得了某个对象的锁，此时这个对象锁还没有释放，当其再次想要获取这个对象的锁的时候还是可以获取的，如果不可锁重入的话，就会造成死锁。同一个线程每次获取锁，锁的计数器都自增1，所以要等到锁的计数器下降为0时才能释放锁。</p>
+<p><strong>② synchronized 依赖于 JVM 而 ReentrantLock 依赖于 API</strong></p>
+<p>synchronized 是依赖于 JVM 实现的，前面我们也讲到了 虚拟机团队在 JDK1.6 为 synchronized 关键字进行了很多优化，但是这些优化都是在虚拟机层面实现的，并没有直接暴露给我们。ReentrantLock 是 JDK 层面实现的（也就是 API 层面，需要 lock() 和 unlock() 方法配合 try/finally 语句块来完成），所以我们可以通过查看它的源代码，来看它是如何实现的。</p>
+<p><strong>③ ReentrantLock 比 synchronized 增加了一些高级功能</strong></p>
+<p>相比synchronized，ReentrantLock增加了一些高级功能。主要来说主要有三点：<strong>①等待可中断；②可实现公平锁；③可实现选择性通知（锁可以绑定多个条件）</strong></p>
+<ul>
+<li><strong>ReentrantLock提供了一种能够中断等待锁的线程的机制</strong>，通过lock.lockInterruptibly()来实现这个机制。也就是说正在等待的线程可以选择放弃等待，改为处理其他事情。</li>
+<li><strong>ReentrantLock可以指定是公平锁还是非公平锁。而synchronized只能是非公平锁。所谓的公平锁就是先等待的线程先获得锁。</strong> ReentrantLock默认情况是非公平的，可以通过 ReentrantLock类的<code>ReentrantLock(boolean fair)</code>构造方法来制定是否是公平的。</li>
+<li>synchronized关键字与wait()和notify()/notifyAll()方法相结合可以实现等待/通知机制，ReentrantLock类当然也可以实现，但是需要借助于Condition接口与newCondition() 方法。Condition是JDK1.5之后才有的，它具有很好的灵活性，比如可以实现多路通知功能也就是在一个Lock对象中可以创建多个Condition实例（即对象监视器），<strong>线程对象可以注册在指定的Condition中，从而可以有选择性的进行线程通知，在调度线程上更加灵活。 在使用notify()/notifyAll()方法进行通知时，被通知的线程是由 JVM 选择的，用ReentrantLock类结合Condition实例可以实现“选择性通知”</strong> ，这个功能非常重要，而且是Condition接口默认提供的。而synchronized关键字就相当于整个Lock对象中只有一个Condition实例，所有的线程都注册在它一个身上。如果执行notifyAll()方法的话就会通知所有处于等待状态的线程这样会造成很大的效率问题，而Condition实例的signalAll()方法 只会唤醒注册在该Condition实例中的所有等待线程。</li>
+</ul>
+<p>如果你想使用上述功能，那么选择ReentrantLock是一个不错的选择。</p>
+<p><strong>④ 性能已不是选择标准</strong></p>
 
       
 
@@ -306,7 +313,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -320,18 +327,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/05/Redis%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/08/JVM%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Redis基础
+          JVM基础
         
       </div>
     </a>
   
   
-    <a href="/2020/03/02/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">论文翻译</div>
+    <a href="/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">乐观锁和悲观锁简介</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -358,7 +365,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命中率"><span class="toc-number">1.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大空间"><span class="toc-number">1.2.</span> <span class="toc-text">最大空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#淘汰策略"><span class="toc-number">1.3.</span> <span class="toc-text">淘汰策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存位置"><span class="toc-number">2.</span> <span class="toc-text">缓存位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器"><span class="toc-number">2.1.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISP"><span class="toc-number">2.2.</span> <span class="toc-text">ISP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向代理"><span class="toc-number">2.3.</span> <span class="toc-text">反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地缓存"><span class="toc-number">2.4.</span> <span class="toc-text">本地缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式缓存"><span class="toc-number">2.5.</span> <span class="toc-text">分布式缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库缓存"><span class="toc-number">2.6.</span> <span class="toc-text">数据库缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-内部的缓存"><span class="toc-number">2.7.</span> <span class="toc-text">Java 内部的缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-多级缓存"><span class="toc-number">2.8.</span> <span class="toc-text">CPU 多级缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-number">2.9.</span> <span class="toc-text">CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存问题"><span class="toc-number">2.10.</span> <span class="toc-text">缓存问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存穿透"><span class="toc-number">2.10.1.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存击穿"><span class="toc-number">2.10.2.</span> <span class="toc-text">缓存击穿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存雪崩"><span class="toc-number">2.10.3.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存一致性"><span class="toc-number">2.10.4.</span> <span class="toc-text">缓存一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存-“无底洞”-现象"><span class="toc-number">2.10.5.</span> <span class="toc-text">缓存 “无底洞” 现象</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#synchronized-关键字"><span class="toc-number">1.</span> <span class="toc-text">synchronized 关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#说一说自己对于-synchronized-关键字的了解"><span class="toc-number">1.1.</span> <span class="toc-text">说一说自己对于 synchronized 关键字的了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说说自己是怎么使用-synchronized-关键字"><span class="toc-number">1.2.</span> <span class="toc-text">说说自己是怎么使用 synchronized 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说说-JDK1-6-之后的synchronized-关键字底层做了哪些优化，"><span class="toc-number">1.3.</span> <span class="toc-text">说说 JDK1.6 之后的synchronized 关键字底层做了哪些优化，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#谈谈-synchronized和ReentrantLock-的区别"><span class="toc-number">1.4.</span> <span class="toc-text">谈谈 synchronized和ReentrantLock 的区别</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

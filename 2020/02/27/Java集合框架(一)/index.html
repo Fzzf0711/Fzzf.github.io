@@ -16,7 +16,7 @@
 <meta property="og:description" content="说说List,Set,Map三者的区别？List： List接口存储一组不唯一（可以有多个元素引用相同的对象），有序的对象 Set: 不允许重复的集合。不会有多个元素引用相同的对象。 Map: 使用键值对存储。Map会维护与Key有关联的值。两个Key可以引用相同的对象，但Key不能重复，典型的Key是String类型，但也可以是任何对象。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-27T13:21:29.708Z">
-<meta property="article:modified_time" content="2020-02-27T13:58:05.188Z">
+<meta property="article:modified_time" content="2020-03-08T15:09:51.962Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 14
+            总文章数 17
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -189,6 +189,18 @@
 <p><strong>对Null key 和Null value的支持：</strong> HashMap 中，null 可以作为键，这样的键只有一个，可以有一个或多个键所对应的值为 null。。但是在 HashTable 中 put 进的键值只要有一个 null，直接抛出 NullPointerException。</p>
 <p><strong>初始容量大小和每次扩充容量大小的不同 ：</strong> ①创建时如果不指定容量初始值，Hashtable 默认的初始大小为11，之后每次扩充，容量变为原来的2n+1。HashMap 默认的初始化大小为16。之后每次扩充，容量变为原来的2倍。②创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为2的幂次方大小（HashMap 中的tableSizeFor()方法保证，下面给出了源代码）。也就是说 HashMap 总是使用2的幂作为哈希表的大小,后面会介绍到为什么是2的幂次方。</p>
 <p><strong>底层数据结构：</strong> JDK1.8 以后的 HashMap 在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间。Hashtable 没有这样的机制。</p>
+<h2 id="HashMap-多线程操作导致死循环问题"><a href="#HashMap-多线程操作导致死循环问题" class="headerlink" title="HashMap 多线程操作导致死循环问题"></a>HashMap 多线程操作导致死循环问题</h2><p>主要原因在于 并发下的Rehash 会造成元素之间会形成一个循环链表。不过，jdk 1.8 后解决了这个问题，但是还是不建议在多线程下使用 HashMap,因为多线程下使用 HashMap 还是会存在其他问题比如数据丢失。并发环境下推荐使用 ConcurrentHashMap 。</p>
+<h2 id="ConcurrentHashMap-和-Hashtable-的区别"><a href="#ConcurrentHashMap-和-Hashtable-的区别" class="headerlink" title="ConcurrentHashMap 和 Hashtable 的区别"></a>ConcurrentHashMap 和 Hashtable 的区别</h2><p>ConcurrentHashMap 和 Hashtable 的区别主要体现在实现线程安全的方式上不同。</p>
+<p><strong>底层数据结构</strong>：JDK1.7的 ConcurrentHashMap 底层采用 <strong>分段的数组+链表</strong> 实现，JDK1.8 采用的数据结构跟HashMap1.8的结构一样，数组+链表/红黑二叉树。Hashtable 和 JDK1.8 之前的 HashMap 的底层数据结构类似都是采用 <strong>数组+链表</strong> 的形式，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的；</p>
+<p><strong>实现线程安全的方式（重要）：</strong> ① <strong>在JDK1.7的时候，ConcurrentHashMap（分段锁）</strong> 对整个桶数组进行了分割分段(Segment)，每一把锁只锁容器其中一部分数据，多线程访问容器里不同数据段的数据，就不会存在锁竞争，提高并发访问率。 <strong>到了 JDK1.8 的时候已经摒弃了Segment的概念，而是直接用 Node 数组+链表+红黑树的数据结构来实现，并发控制使用 synchronized 和 CAS 来操作。（JDK1.6以后 对 synchronized锁做了很多优化）</strong> 整个看起来就像是优化过且线程安全的 HashMap，虽然在JDK1.8中还能看到 Segment 的数据结构，但是已经简化了属性，只是为了兼容旧版本；② <strong>Hashtable(同一把锁)</strong> :使用 synchronized 来保证线程安全，效率非常低下。当一个线程访问同步方法时，其他线程也访问同步方法，可能会进入阻塞或轮询状态，如使用 put 添加元素，另一个线程不能使用 put 添加元素，也不能使用 get，竞争会越来越激烈效率越低。</p>
+<h2 id="ConcurrentHashMap线程安全的具体实现方式-底层具体实现"><a href="#ConcurrentHashMap线程安全的具体实现方式-底层具体实现" class="headerlink" title="ConcurrentHashMap线程安全的具体实现方式/底层具体实现"></a>ConcurrentHashMap线程安全的具体实现方式/底层具体实现</h2><h3 id="JDK1-7"><a href="#JDK1-7" class="headerlink" title="JDK1.7"></a>JDK1.7</h3><p>首先将数据分为一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其他段的数据也能被其他线程访问。</p>
+<p><strong>ConcurrentHashMap 是由 Segment 数组结构和 HashEntry 数组结构组成</strong>。</p>
+<p>Segment 实现了 ReentrantLock,所以 Segment 是一种可重入锁，扮演锁的角色。HashEntry 用于存储键值对数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Segment</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">ReentrantLock</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个 ConcurrentHashMap 里包含一个 Segment 数组。Segment 的结构和HashMap类似，是一种数组和链表结构，一个 Segment 包含一个 HashEntry 数组，每个 HashEntry 是一个链表结构的元素，每个 Segment 守护着一个HashEntry数组里的元素，当对 HashEntry 数组的数据进行修改时，必须首先获得对应的 Segment的锁。</p>
+<h3 id="JDK1-8"><a href="#JDK1-8" class="headerlink" title="JDK1.8"></a>JDK1.8</h3><p>ConcurrentHashMap取消了Segment分段锁，采用CAS和synchronized来保证并发安全。数据结构跟HashMap1.8的结构类似，数组+链表/红黑二叉树。Java 8在链表长度超过一定阈值（8）时将链表（寻址时间复杂度为O(N)）转换为红黑树（寻址时间复杂度为O(log(N))）</p>
+<p>synchronized只锁定当前链表或红黑二叉树的首节点，这样只要hash不冲突，就不会产生并发，效率又提升N倍。</p>
 <h2 id="String-StringBuffer-和-StringBuilder-的区别是什么-String-为什么是不可变的"><a href="#String-StringBuffer-和-StringBuilder-的区别是什么-String-为什么是不可变的" class="headerlink" title="String StringBuffer 和 StringBuilder 的区别是什么? String 为什么是不可变的?"></a>String StringBuffer 和 StringBuilder 的区别是什么? String 为什么是不可变的?</h2><p>String 类中使用 final 关键字修饰字符数组来保存字符串，String对象是不可变的。</p>
 <p>StringBuilder 与 StringBuffer 都继承自 AbstractStringBuilder 类，在 AbstractStringBuilder 中也是使用字符数组保存字符串 char[] value但是没有用 final 关键字修饰，所以这两种对象都是可变的。</p>
 <p><strong>线程安全性</strong>：String 中的对象是不可变的，也就可以理解为常量，线程安全。StringBuffer 对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。StringBuilder 并没有对方法进行加同步锁，所以是非线程安全的。　</p>
@@ -328,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说说List-Set-Map三者的区别？"><span class="toc-number">1.</span> <span class="toc-text">说说List,Set,Map三者的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList-与-LinkedList-区别"><span class="toc-number">2.</span> <span class="toc-text">ArrayList 与 LinkedList 区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-和-Hashtable-的区别"><span class="toc-number">3.</span> <span class="toc-text">HashMap 和 Hashtable 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-StringBuffer-和-StringBuilder-的区别是什么-String-为什么是不可变的"><span class="toc-number">4.</span> <span class="toc-text">String StringBuffer 和 StringBuilder 的区别是什么? String 为什么是不可变的?</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说说List-Set-Map三者的区别？"><span class="toc-number">1.</span> <span class="toc-text">说说List,Set,Map三者的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList-与-LinkedList-区别"><span class="toc-number">2.</span> <span class="toc-text">ArrayList 与 LinkedList 区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-和-Hashtable-的区别"><span class="toc-number">3.</span> <span class="toc-text">HashMap 和 Hashtable 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap-多线程操作导致死循环问题"><span class="toc-number">4.</span> <span class="toc-text">HashMap 多线程操作导致死循环问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcurrentHashMap-和-Hashtable-的区别"><span class="toc-number">5.</span> <span class="toc-text">ConcurrentHashMap 和 Hashtable 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcurrentHashMap线程安全的具体实现方式-底层具体实现"><span class="toc-number">6.</span> <span class="toc-text">ConcurrentHashMap线程安全的具体实现方式&#x2F;底层具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-7"><span class="toc-number">6.1.</span> <span class="toc-text">JDK1.7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-8"><span class="toc-number">6.2.</span> <span class="toc-text">JDK1.8</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-StringBuffer-和-StringBuilder-的区别是什么-String-为什么是不可变的"><span class="toc-number">7.</span> <span class="toc-text">String StringBuffer 和 StringBuilder 的区别是什么? String 为什么是不可变的?</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>缓存概念简介 | Fzzf的博客</title>
+  <title>乐观锁和悲观锁简介 | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="缓存特征命中率当某个请求能够通过访问缓存而得到响应时，称为缓存命中。 缓存命中率越高，缓存的利用率也就越高。 最大空间缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。 当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。 淘汰策略FIFO（First In First Out）：先进先出策略，在实时性的场景下，需要经常访问最新的数据，那么就可">
+  <meta name="description" content="悲观锁总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程）。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。Java中synchronized和ReentrantLock等独占锁就是悲观锁思想的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="缓存概念简介">
-<meta property="og:url" content="http://yoursite.com/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:title" content="乐观锁和悲观锁简介">
+<meta property="og:url" content="http://yoursite.com/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="缓存特征命中率当某个请求能够通过访问缓存而得到响应时，称为缓存命中。 缓存命中率越高，缓存的利用率也就越高。 最大空间缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。 当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。 淘汰策略FIFO（First In First Out）：先进先出策略，在实时性的场景下，需要经常访问最新的数据，那么就可">
+<meta property="og:description" content="悲观锁总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程）。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。Java中synchronized和ReentrantLock等独占锁就是悲观锁思想的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-03T07:12:18.794Z">
-<meta property="article:modified_time" content="2020-03-03T07:36:20.958Z">
+<meta property="article:published_time" content="2020-03-08T11:46:26.758Z">
+<meta property="article:modified_time" content="2020-03-08T12:34:48.436Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
@@ -154,79 +154,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-缓存概念简介" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-乐观锁和悲观锁简介" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      缓存概念简介
+      乐观锁和悲观锁简介
     </h1>
   
 
         
-        <a href="/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2020-03-03T07:12:18.794Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
+        <a href="/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2020-03-08T11:46:26.758Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="缓存特征"><a href="#缓存特征" class="headerlink" title="缓存特征"></a>缓存特征</h2><h3 id="命中率"><a href="#命中率" class="headerlink" title="命中率"></a>命中率</h3><p>当某个请求能够通过访问缓存而得到响应时，称为缓存命中。</p>
-<p>缓存命中率越高，缓存的利用率也就越高。</p>
-<h3 id="最大空间"><a href="#最大空间" class="headerlink" title="最大空间"></a>最大空间</h3><p>缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。</p>
-<p>当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。</p>
-<h3 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h3><p><strong>FIFO（First In First Out）：先进先出策略</strong>，在实时性的场景下，需要经常访问最新的数据，那么就可以使用 FIFO，使得最先进入的数据（最晚的数据）被淘汰。</p>
-<p><strong>LRU（Least Recently Used）：最近最久未使用策略</strong>，优先淘汰最久未使用的数据，也就是上次被访问时间距离现在最久的数据。该策略可以保证内存中的数据都是热点数据，也就是经常被访问的数据，从而保证缓存命中率。</p>
-<p><strong>LFU（Least Frequently Used）：最不经常使用策略</strong>，优先淘汰一段时间内使用次数最少的数据。</p>
-<a id="more"></a>
-
-<h2 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h2><h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>当 HTTP 响应允许进行缓存时，浏览器会将 HTML、CSS、JavaScript、图片等静态资源进行缓存。</p>
-<h3 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h3><p>网络服务提供商（ISP）是网络访问的第一跳，通过将数据缓存在 ISP 中能够大大提高用户的访问速度。</p>
-<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>反向代理位于服务器之前，请求与响应都需要经过反向代理。通过将数据缓存在反向代理，在用户请求反向代理时就可以直接使用缓存进行响应。</p>
-<h3 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h3><p>使用 Guava Cache 将数据缓存在服务器本地内存中，服务器代码可以直接读取本地内存中的缓存，速度非常快。</p>
-<h3 id="分布式缓存"><a href="#分布式缓存" class="headerlink" title="分布式缓存"></a>分布式缓存</h3><p>使用 Redis、Memcache 等分布式缓存将数据缓存在分布式缓存系统中。</p>
-<p>相对于本地缓存来说，分布式缓存单独部署，可以根据需求分配硬件资源。不仅如此，服务器集群都可以访问分布式缓存，而本地缓存需要在服务器集群之间进行同步，实现难度和性能开销上都非常大。</p>
-<h3 id="数据库缓存"><a href="#数据库缓存" class="headerlink" title="数据库缓存"></a>数据库缓存</h3><p>MySQL 等数据库管理系统具有自己的查询缓存机制来提高查询效率。</p>
-<h3 id="Java-内部的缓存"><a href="#Java-内部的缓存" class="headerlink" title="Java 内部的缓存"></a>Java 内部的缓存</h3><p>Java 为了优化空间，提高字符串、基本数据类型包装类的创建效率，设计了字符串常量池及 Byte、Short、Character、Integer、Long、Boolean 这六种包装类缓冲池。</p>
-<h3 id="CPU-多级缓存"><a href="#CPU-多级缓存" class="headerlink" title="CPU 多级缓存"></a>CPU 多级缓存</h3><p>CPU 为了解决运算速度与主存 IO 速度不匹配的问题，引入了多级缓存结构，同时使用 MESI 等缓存一致性协议来解决多核 CPU 缓存数据一致性的问题。</p>
-<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>内容分发网络（Content distribution network，CDN）是一种互连的网络系统，它利用更靠近用户的服务器从而更快更可靠地将 HTML、CSS、JavaScript、音乐、图片、视频等静态资源分发给用户。</p>
-<p>依靠部署在各地的边缘服务器，通过中心平台的负载均衡，内容分发，，用户就近获取所需内容，降低网络拥塞，提高用户访问相应速度和命中率，关键是内容存储和分发技术。</p>
-<p>归纳起来，CDN具有以下主要功能：</p>
-<p>(1)节省骨干网带宽，减少带宽需求量；  </p>
-<p>(2)提供服务器端加速，解决由于用户访问量大造成的服务器过载问题； </p>
-<p>(3)服务商能使用Web Cache技术在本地缓存用户访问过的Web页面和对象，实现相同对象的访问无须占用主干的出口带宽，并提高用户访问因特网页面的相应时间的需求； </p>
-<p>(4)能克服网站分布不均的问题，并且能降低网站自身建设和维护成本； </p>
-<p>(5)降低“通信风暴”的影响，提高网络访问的稳定性。 </p>
-<p>CDN 主要有以下优点：</p>
-<p>更快地将数据分发给用户；</p>
-<p>通过部署多台服务器，从而提高系统整体的带宽性能；</p>
-<p>多台服务器可以看成是一种冗余机制，从而具有高可用性。</p>
-<h3 id="缓存问题"><a href="#缓存问题" class="headerlink" title="缓存问题"></a>缓存问题</h3><h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p>指的是对某个一定不存在的数据进行请求，该请求将会穿透缓存到达数据库。</p>
-<p>解决方案：</p>
-<p>对这些不存在的数据缓存一个空数据，从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击；</p>
-<p>对这类请求进行过滤，接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；</p>
-<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><p>缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力。</p>
-<p>解决方案：设置热点数据永远不过期。</p>
-<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><p>指的是由于数据没有被加载到缓存中，或者缓存数据在同一时间大面积失效（过期），又或者缓存服务器宕机，导致大量的请求都到达数据库。</p>
-<p>在有缓存的系统中，系统非常依赖于缓存，缓存分担了很大一部分的数据请求。当发生缓存雪崩时，数据库无法处理这么大的请求，导致数据库崩溃。</p>
-<p>解决方案：</p>
-<p>缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。</p>
-<p>如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。</p>
-<p>设置热点数据永远不过期。</p>
-<h4 id="缓存一致性"><a href="#缓存一致性" class="headerlink" title="缓存一致性"></a>缓存一致性</h4><p>缓存一致性要求数据更新的同时缓存数据也能够实时更新。</p>
-<p>解决方案：</p>
-<p>在数据更新的同时立即去更新缓存；</p>
-<p>在读缓存之前先判断缓存是否是最新的，如果不是最新的先进行更新。</p>
-<p>要保证缓存一致性需要付出很大的代价，缓存数据最好是那些对一致性要求不高的数据，允许缓存数据存在一些脏数据。</p>
-<h4 id="缓存-“无底洞”-现象"><a href="#缓存-“无底洞”-现象" class="headerlink" title="缓存 “无底洞” 现象"></a>缓存 “无底洞” 现象</h4><p>指的是为了满足业务要求添加了大量缓存节点，但是性能不但没有好转反而下降了的现象。</p>
-<p>产生原因：缓存系统通常采用 hash 函数将 key 映射到对应的缓存节点，随着缓存节点数目的增加，键值分布到更多的节点上，导致客户端一次批量操作会涉及多次网络操作，这意味着批量操作的耗时会随着节点数目的增加而不断增大。此外，网络连接数变多，对节点的性能也有一定影响。</p>
-<p>解决方案：</p>
-<p>优化批量数据操作命令；</p>
-<p>减少网络通信次数；</p>
-<p>降低接入成本，使用长连接 / 连接池，NIO 等。</p>
+        <h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（<strong>共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程</strong>）。<strong>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</strong>Java中<code>synchronized</code>和<code>ReentrantLock</code>等独占锁就是悲观锁思想的实现。</p>
+<h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><p>总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。<strong>乐观锁适用于多读的应用类型，这样可以提高吞吐量</strong>，像数据库提供的类似于<strong>write_condition机制</strong>，其实都是提供的乐观锁。在Java中<code>java.util.concurrent.atomic</code>包下面的原子变量类就是使用了乐观锁的一种实现方式<strong>CAS</strong>实现的。</p>
+<h4 id="两种锁的使用场景"><a href="#两种锁的使用场景" class="headerlink" title="两种锁的使用场景"></a>两种锁的使用场景</h4><p>从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像<strong>乐观锁适用于写比较少的情况下（多读场景）</strong>，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以<strong>一般多写的场景下用悲观锁就比较合适。</strong></p>
+<h3 id="乐观锁常见的两种实现方式"><a href="#乐观锁常见的两种实现方式" class="headerlink" title="乐观锁常见的两种实现方式"></a>乐观锁常见的两种实现方式</h3><blockquote>
+<p><strong>乐观锁一般会使用版本号机制或CAS算法实现。</strong></p>
+</blockquote>
+<h4 id="1-版本号机制"><a href="#1-版本号机制" class="headerlink" title="1. 版本号机制"></a>1. 版本号机制</h4><p>一般是在数据表中加上一个数据版本号version字段，表示数据被修改的次数，当数据被修改时，version值会加一。当线程A要更新数据值时，在读取数据的同时也会读取version值，在提交更新时，若刚才读取到的version值为当前数据库中的version值相等时才更新，否则重试更新操作，直到更新成功。</p>
+<h4 id="2-CAS算法"><a href="#2-CAS算法" class="headerlink" title="2. CAS算法"></a>2. CAS算法</h4><p>即<strong>compare and swap（比较与交换）</strong>，是一种有名的<strong>无锁算法</strong>。无锁编程，即不使用锁的情况下实现多线程之间的变量同步，<strong>也就是在没有线程被阻塞的情况下实现变量的同步，所以也叫非阻塞同步</strong>（Non-blocking Synchronization）。<strong>CAS算法</strong>涉及到三个操作数</p>
+<ul>
+<li>需要读写的内存值 V</li>
+<li>进行比较的值 A</li>
+<li>拟写入的新值 B</li>
+</ul>
+<p>多个线程可能同时访问一个共享资源的时候，这个资源命名为V，当前线程中会有一个共享资源的缓存，被称为A，当A == V时，说明你的缓存没有过期，就直接修改内存中的值了，如果A != V，就是缓存过期了，就要从新获取到V的数据到缓存在写入</p>
+<p>当且仅当 V 的值等于 A时，CAS通过原子方式用新值B来更新V的值，否则不会执行任何操作（比较和替换是一个原子操作）。一般情况下是一个<strong>自旋操作</strong>，即<strong>不断的重试</strong>。</p>
+<h3 id="乐观锁的缺点"><a href="#乐观锁的缺点" class="headerlink" title="乐观锁的缺点"></a>乐观锁的缺点</h3><blockquote>
+<p>ABA 问题是乐观锁一个常见的问题</p>
+</blockquote>
+<h4 id="1-ABA-问题"><a href="#1-ABA-问题" class="headerlink" title="1 ABA 问题"></a>1 ABA 问题</h4><p>如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。这个问题被称为CAS操作的 <strong>“ABA”问题。</strong></p>
+<p>JDK 1.5 以后的 <code>AtomicStampedReference 类</code>就提供了此种能力，其中的 <code>compareAndSet 方法</code>就是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。</p>
+<h4 id="2-循环时间长开销大"><a href="#2-循环时间长开销大" class="headerlink" title="2 循环时间长开销大"></a>2 循环时间长开销大</h4><p><strong>自旋CAS（也就是不成功就一直循环执行直到成功）如果长时间不成功，会给CPU带来非常大的执行开销。</strong> 如果JVM能支持处理器提供的pause指令那么效率会有一定的提升，pause指令有两个作用，第一它可以延迟流水线执行指令（de-pipeline）,使CPU不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零。第二它可以避免在退出循环的时候因内存顺序冲突（memory order violation）而引起CPU流水线被清空（CPU pipeline flush），从而提高CPU的执行效率。</p>
+<h4 id="3-只能保证一个共享变量的原子操作"><a href="#3-只能保证一个共享变量的原子操作" class="headerlink" title="3 只能保证一个共享变量的原子操作"></a>3 只能保证一个共享变量的原子操作</h4><p>CAS 只对单个共享变量有效，当操作涉及跨多个共享变量时 CAS 无效。但是从 JDK 1.5开始，提供了<code>AtomicReference类</code>来保证引用对象之间的原子性，你可以把多个变量放在一个对象里来进行 CAS 操作.所以我们可以使用锁或者利用<code>AtomicReference类</code>把多个共享变量合并成一个共享变量来操作。</p>
+<h3 id="CAS与synchronized的使用情景"><a href="#CAS与synchronized的使用情景" class="headerlink" title="CAS与synchronized的使用情景"></a>CAS与synchronized的使用情景</h3><blockquote>
+<p><strong>简单的来说CAS适用于写比较少的情况下（多读场景，冲突一般较少），synchronized适用于写比较多的情况下（多写场景，冲突一般较多）</strong></p>
+</blockquote>
+<ol>
+<li>对于资源竞争较少（线程冲突较轻）的情况，使用synchronized同步锁进行线程阻塞和唤醒切换以及用户态内核态间的切换操作额外浪费消耗cpu资源；而CAS基于硬件实现，不需要进入内核，不需要切换线程，操作自旋几率较少，因此可以获得更高的性能。</li>
+<li>对于资源竞争严重（线程冲突严重）的情况，CAS自旋的概率会比较大，从而浪费更多的CPU资源，效率低于synchronized。</li>
+</ol>
+<p>补充： Java并发编程这个领域中synchronized关键字一直都是元老级的角色，很久之前很多人都会称它为 <strong>“重量级锁”</strong> 。但是，在JavaSE 1.6之后进行了主要包括为了减少获得锁和释放锁带来的性能消耗而引入的 <strong>偏向锁</strong> 和 <strong>轻量级锁</strong> 以及其它<strong>各种优化</strong>之后变得在某些情况下并不是那么重了。synchronized的底层实现主要依靠 <strong>Lock-Free</strong> 的队列，基本思路是 <strong>自旋后阻塞</strong>，<strong>竞争切换后继续竞争锁</strong>，<strong>稍微牺牲了公平性，但获得了高吞吐量</strong>。在线程冲突较少的情况下，可以获得和CAS类似的性能；而线程冲突严重的情况下，性能远高于CAS。</p>
+<h3 id="什么是自旋锁？"><a href="#什么是自旋锁？" class="headerlink" title="什么是自旋锁？"></a>什么是自旋锁？</h3><p>自旋锁（spinlock）：是指当一个线程在获取锁的时候，如果锁已经被其它线程获取，那么该线程将循环等待，然后不断的判断锁是否能够被成功获取，直到获取到锁才会退出循环。</p>
+<p>获取锁的线程一直处于活跃状态，但是并没有执行任何有效的任务，使用这种锁会造成<a href="https://en.wikipedia.org/wiki/Busy_waiting" target="_blank" rel="noopener">busy-waiting</a>。</p>
+<p>它是为实现保护共享资源而提出一种锁机制。其实，自旋锁与互斥锁比较类似，它们都是为了解决对某项资源的互斥使用。无论是互斥锁，还是自旋锁，在任何时刻，最多只能有一个保持者，也就说，在任何时刻最多只能有一个执行单元获得锁。但是两者在调度机制上略有不同。对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
+<h3 id="自旋锁存在的问题"><a href="#自旋锁存在的问题" class="headerlink" title="自旋锁存在的问题"></a>自旋锁存在的问题</h3><p>如果某个线程持有锁的时间过长，就会导致其它等待获取锁的线程进入循环等待，消耗CPU。使用不当会造成CPU使用率极高。</p>
+<p>上面Java实现的自旋锁不是公平的，即无法满足等待时间最长的线程优先获取锁。不公平的锁就会存在“线程饥饿”问题。</p>
+<h3 id="自旋锁的优点"><a href="#自旋锁的优点" class="headerlink" title="自旋锁的优点"></a>自旋锁的优点</h3><p>自旋锁不会使线程状态发生切换，一直处于用户态，即线程一直都是active的；不会使线程进入阻塞状态，减少了不必要的上下文切换，执行速度快</p>
+<p>非自旋锁在获取不到锁的时候会进入阻塞状态，从而进入内核态，当获取到锁的时候需要从内核态恢复，需要线程上下文切换。 （线程被阻塞后便进入内核（Linux）调度状态，这个会导致系统在用户态与内核态之间来回切换，严重影响锁的性能）</p>
+<h3 id="可重入锁和不可重入锁"><a href="#可重入锁和不可重入锁" class="headerlink" title="可重入锁和不可重入锁"></a>可重入锁和不可重入锁</h3><p>不可重入锁：只判断这个锁有没有被锁上；只要被锁上，申请锁的线程都会被要求等待。实现简单</p>
+<p>可重入锁：不仅判断锁有没有被锁上，还会判断锁是谁锁上的，自己上锁的时候，依旧可以再次访问临界资源，并把加锁次数加一。</p>
+<p>设计了加锁次数：<strong>以在解锁的时候，可以确保所有加锁的过程都解锁了，其他线程才能访问。不然没有加锁的参考值，也就不知道什么时候解锁？解锁多少次？才能保证本线程已经访问完临界资源了可以唤醒其他线程访问了。实现相对复杂。</strong></p>
+<p>总结：这个重入的概念就是，拿到锁的代码能不能多次以不同的方式访问临界资源而不出现死锁等相关问题。经典之处在于判断了需要使用锁的线程是否为加锁的线程。如果是，则拥有<strong>重（chong）入的</strong>能力。</p>
 
       
 
@@ -306,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -320,18 +308,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/05/Redis%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Redis基础
+          Java并发进阶
         
       </div>
     </a>
   
   
-    <a href="/2020/03/02/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">论文翻译</div>
+    <a href="/2020/03/08/Java%E5%B9%B6%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java并发</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -358,7 +346,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命中率"><span class="toc-number">1.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大空间"><span class="toc-number">1.2.</span> <span class="toc-text">最大空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#淘汰策略"><span class="toc-number">1.3.</span> <span class="toc-text">淘汰策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存位置"><span class="toc-number">2.</span> <span class="toc-text">缓存位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器"><span class="toc-number">2.1.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISP"><span class="toc-number">2.2.</span> <span class="toc-text">ISP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向代理"><span class="toc-number">2.3.</span> <span class="toc-text">反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地缓存"><span class="toc-number">2.4.</span> <span class="toc-text">本地缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式缓存"><span class="toc-number">2.5.</span> <span class="toc-text">分布式缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库缓存"><span class="toc-number">2.6.</span> <span class="toc-text">数据库缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-内部的缓存"><span class="toc-number">2.7.</span> <span class="toc-text">Java 内部的缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-多级缓存"><span class="toc-number">2.8.</span> <span class="toc-text">CPU 多级缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-number">2.9.</span> <span class="toc-text">CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存问题"><span class="toc-number">2.10.</span> <span class="toc-text">缓存问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存穿透"><span class="toc-number">2.10.1.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存击穿"><span class="toc-number">2.10.2.</span> <span class="toc-text">缓存击穿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存雪崩"><span class="toc-number">2.10.3.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存一致性"><span class="toc-number">2.10.4.</span> <span class="toc-text">缓存一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存-“无底洞”-现象"><span class="toc-number">2.10.5.</span> <span class="toc-text">缓存 “无底洞” 现象</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#悲观锁"><span class="toc-number">1.</span> <span class="toc-text">悲观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乐观锁"><span class="toc-number">2.</span> <span class="toc-text">乐观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两种锁的使用场景"><span class="toc-number">3.</span> <span class="toc-text">两种锁的使用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁常见的两种实现方式"><span class="toc-number"></span> <span class="toc-text">乐观锁常见的两种实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-版本号机制"><span class="toc-number">1.</span> <span class="toc-text">1. 版本号机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-CAS算法"><span class="toc-number">2.</span> <span class="toc-text">2. CAS算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁的缺点"><span class="toc-number"></span> <span class="toc-text">乐观锁的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ABA-问题"><span class="toc-number">1.</span> <span class="toc-text">1 ABA 问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-循环时间长开销大"><span class="toc-number">2.</span> <span class="toc-text">2 循环时间长开销大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-只能保证一个共享变量的原子操作"><span class="toc-number">3.</span> <span class="toc-text">3 只能保证一个共享变量的原子操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS与synchronized的使用情景"><span class="toc-number"></span> <span class="toc-text">CAS与synchronized的使用情景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是自旋锁？"><span class="toc-number"></span> <span class="toc-text">什么是自旋锁？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自旋锁存在的问题"><span class="toc-number"></span> <span class="toc-text">自旋锁存在的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自旋锁的优点"><span class="toc-number"></span> <span class="toc-text">自旋锁的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可重入锁和不可重入锁"><span class="toc-number"></span> <span class="toc-text">可重入锁和不可重入锁</span></a>
                     </div>
                 </span>
             </div>

@@ -65,7 +65,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 14
+            总文章数 17
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -153,6 +153,236 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-JVM基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/JVM%E5%9F%BA%E7%A1%80/">JVM基础</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/08/JVM%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-03-08T13:45:41.458Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-内存区域详解"><a href="#Java-内存区域详解" class="headerlink" title="Java 内存区域详解"></a>Java 内存区域详解</h1><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>对于 Java 程序员来说，在虚拟机自动内存管理机制下，不再需要像 C/C++程序开发程序员这样为每一个 new 操作去写对应的 delete/free 操作，不容易出现内存泄漏和内存溢出问题。正是因为 Java 程序员把内存控制权利交给 Java 虚拟机，一旦出现内存泄漏和溢出方面的问题，如果不了解虚拟机是怎样使用内存的，那么排查错误将会是一个非常艰巨的任务。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/08/JVM%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java并发进阶" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/">Java并发进阶</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/" class="archive-article-date">
+  	<time datetime="2020-03-08T12:37:32.005Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h2><h3 id="说一说自己对于-synchronized-关键字的了解"><a href="#说一说自己对于-synchronized-关键字的了解" class="headerlink" title="说一说自己对于 synchronized 关键字的了解"></a>说一说自己对于 synchronized 关键字的了解</h3><p>synchronized关键字解决的是多个线程之间访问资源的同步性，synchronized关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。</p>
+<p>另外，在 Java 早期版本中，synchronized属于重量级锁，效率低下，因为监视器锁（monitor）是依赖于底层的操作系统的 Mutex Lock 来实现的，Java 的线程是映射到操作系统的原生线程之上的。如果要挂起或者唤醒一个线程，都需要操作系统帮忙完成，而操作系统实现线程之间的切换时需要从用户态转换到内核态，这个状态之间的转换需要相对比较长的时间，时间成本相对较高，这也是为什么早期的 synchronized 效率低的原因。庆幸的是在 Java 6 之后 Java 官方对从 JVM 层面对synchronized 较大优化，所以现在的 synchronized 锁效率也优化得很不错了。<strong>JDK1.6对锁的实现引入了大量的优化，如自旋锁、适应性自旋锁、锁消除、锁粗化、偏向锁、轻量级锁等技术来减少锁操作的开销。</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-乐观锁和悲观锁简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/">乐观锁和悲观锁简介</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2020-03-08T11:46:26.758Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（<strong>共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程</strong>）。<strong>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</strong>Java中<code>synchronized</code>和<code>ReentrantLock</code>等独占锁就是悲观锁思想的实现。</p>
+<h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><p>总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。<strong>乐观锁适用于多读的应用类型，这样可以提高吞吐量</strong>，像数据库提供的类似于<strong>write_condition机制</strong>，其实都是提供的乐观锁。在Java中<code>java.util.concurrent.atomic</code>包下面的原子变量类就是使用了乐观锁的一种实现方式<strong>CAS</strong>实现的。</p>
+<h4 id="两种锁的使用场景"><a href="#两种锁的使用场景" class="headerlink" title="两种锁的使用场景"></a>两种锁的使用场景</h4><p>从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像<strong>乐观锁适用于写比较少的情况下（多读场景）</strong>，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以<strong>一般多写的场景下用悲观锁就比较合适。</strong></p>
+<h3 id="乐观锁常见的两种实现方式"><a href="#乐观锁常见的两种实现方式" class="headerlink" title="乐观锁常见的两种实现方式"></a>乐观锁常见的两种实现方式</h3><blockquote>
+<p><strong>乐观锁一般会使用版本号机制或CAS算法实现。</strong></p>
+</blockquote>
+<h4 id="1-版本号机制"><a href="#1-版本号机制" class="headerlink" title="1. 版本号机制"></a>1. 版本号机制</h4><p>一般是在数据表中加上一个数据版本号version字段，表示数据被修改的次数，当数据被修改时，version值会加一。当线程A要更新数据值时，在读取数据的同时也会读取version值，在提交更新时，若刚才读取到的version值为当前数据库中的version值相等时才更新，否则重试更新操作，直到更新成功。</p>
+<h4 id="2-CAS算法"><a href="#2-CAS算法" class="headerlink" title="2. CAS算法"></a>2. CAS算法</h4><p>即<strong>compare and swap（比较与交换）</strong>，是一种有名的<strong>无锁算法</strong>。无锁编程，即不使用锁的情况下实现多线程之间的变量同步，<strong>也就是在没有线程被阻塞的情况下实现变量的同步，所以也叫非阻塞同步</strong>（Non-blocking Synchronization）。<strong>CAS算法</strong>涉及到三个操作数</p>
+<ul>
+<li>需要读写的内存值 V</li>
+<li>进行比较的值 A</li>
+<li>拟写入的新值 B</li>
+</ul>
+<p>多个线程可能同时访问一个共享资源的时候，这个资源命名为V，当前线程中会有一个共享资源的缓存，被称为A，当A == V时，说明你的缓存没有过期，就直接修改内存中的值了，如果A != V，就是缓存过期了，就要从新获取到V的数据到缓存在写入</p>
+<p>当且仅当 V 的值等于 A时，CAS通过原子方式用新值B来更新V的值，否则不会执行任何操作（比较和替换是一个原子操作）。一般情况下是一个<strong>自旋操作</strong>，即<strong>不断的重试</strong>。</p>
+<h3 id="乐观锁的缺点"><a href="#乐观锁的缺点" class="headerlink" title="乐观锁的缺点"></a>乐观锁的缺点</h3><blockquote>
+<p>ABA 问题是乐观锁一个常见的问题</p>
+</blockquote>
+<h4 id="1-ABA-问题"><a href="#1-ABA-问题" class="headerlink" title="1 ABA 问题"></a>1 ABA 问题</h4><p>如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。这个问题被称为CAS操作的 <strong>“ABA”问题。</strong></p>
+<p>JDK 1.5 以后的 <code>AtomicStampedReference 类</code>就提供了此种能力，其中的 <code>compareAndSet 方法</code>就是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。</p>
+<h4 id="2-循环时间长开销大"><a href="#2-循环时间长开销大" class="headerlink" title="2 循环时间长开销大"></a>2 循环时间长开销大</h4><p><strong>自旋CAS（也就是不成功就一直循环执行直到成功）如果长时间不成功，会给CPU带来非常大的执行开销。</strong> 如果JVM能支持处理器提供的pause指令那么效率会有一定的提升，pause指令有两个作用，第一它可以延迟流水线执行指令（de-pipeline）,使CPU不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零。第二它可以避免在退出循环的时候因内存顺序冲突（memory order violation）而引起CPU流水线被清空（CPU pipeline flush），从而提高CPU的执行效率。</p>
+<h4 id="3-只能保证一个共享变量的原子操作"><a href="#3-只能保证一个共享变量的原子操作" class="headerlink" title="3 只能保证一个共享变量的原子操作"></a>3 只能保证一个共享变量的原子操作</h4><p>CAS 只对单个共享变量有效，当操作涉及跨多个共享变量时 CAS 无效。但是从 JDK 1.5开始，提供了<code>AtomicReference类</code>来保证引用对象之间的原子性，你可以把多个变量放在一个对象里来进行 CAS 操作.所以我们可以使用锁或者利用<code>AtomicReference类</code>把多个共享变量合并成一个共享变量来操作。</p>
+<h3 id="CAS与synchronized的使用情景"><a href="#CAS与synchronized的使用情景" class="headerlink" title="CAS与synchronized的使用情景"></a>CAS与synchronized的使用情景</h3><blockquote>
+<p><strong>简单的来说CAS适用于写比较少的情况下（多读场景，冲突一般较少），synchronized适用于写比较多的情况下（多写场景，冲突一般较多）</strong></p>
+</blockquote>
+<ol>
+<li>对于资源竞争较少（线程冲突较轻）的情况，使用synchronized同步锁进行线程阻塞和唤醒切换以及用户态内核态间的切换操作额外浪费消耗cpu资源；而CAS基于硬件实现，不需要进入内核，不需要切换线程，操作自旋几率较少，因此可以获得更高的性能。</li>
+<li>对于资源竞争严重（线程冲突严重）的情况，CAS自旋的概率会比较大，从而浪费更多的CPU资源，效率低于synchronized。</li>
+</ol>
+<p>补充： Java并发编程这个领域中synchronized关键字一直都是元老级的角色，很久之前很多人都会称它为 <strong>“重量级锁”</strong> 。但是，在JavaSE 1.6之后进行了主要包括为了减少获得锁和释放锁带来的性能消耗而引入的 <strong>偏向锁</strong> 和 <strong>轻量级锁</strong> 以及其它<strong>各种优化</strong>之后变得在某些情况下并不是那么重了。synchronized的底层实现主要依靠 <strong>Lock-Free</strong> 的队列，基本思路是 <strong>自旋后阻塞</strong>，<strong>竞争切换后继续竞争锁</strong>，<strong>稍微牺牲了公平性，但获得了高吞吐量</strong>。在线程冲突较少的情况下，可以获得和CAS类似的性能；而线程冲突严重的情况下，性能远高于CAS。</p>
+<h3 id="什么是自旋锁？"><a href="#什么是自旋锁？" class="headerlink" title="什么是自旋锁？"></a>什么是自旋锁？</h3><p>自旋锁（spinlock）：是指当一个线程在获取锁的时候，如果锁已经被其它线程获取，那么该线程将循环等待，然后不断的判断锁是否能够被成功获取，直到获取到锁才会退出循环。</p>
+<p>获取锁的线程一直处于活跃状态，但是并没有执行任何有效的任务，使用这种锁会造成<a href="https://en.wikipedia.org/wiki/Busy_waiting" target="_blank" rel="noopener">busy-waiting</a>。</p>
+<p>它是为实现保护共享资源而提出一种锁机制。其实，自旋锁与互斥锁比较类似，它们都是为了解决对某项资源的互斥使用。无论是互斥锁，还是自旋锁，在任何时刻，最多只能有一个保持者，也就说，在任何时刻最多只能有一个执行单元获得锁。但是两者在调度机制上略有不同。对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
+<h3 id="自旋锁存在的问题"><a href="#自旋锁存在的问题" class="headerlink" title="自旋锁存在的问题"></a>自旋锁存在的问题</h3><p>如果某个线程持有锁的时间过长，就会导致其它等待获取锁的线程进入循环等待，消耗CPU。使用不当会造成CPU使用率极高。</p>
+<p>上面Java实现的自旋锁不是公平的，即无法满足等待时间最长的线程优先获取锁。不公平的锁就会存在“线程饥饿”问题。</p>
+<h3 id="自旋锁的优点"><a href="#自旋锁的优点" class="headerlink" title="自旋锁的优点"></a>自旋锁的优点</h3><p>自旋锁不会使线程状态发生切换，一直处于用户态，即线程一直都是active的；不会使线程进入阻塞状态，减少了不必要的上下文切换，执行速度快</p>
+<p>非自旋锁在获取不到锁的时候会进入阻塞状态，从而进入内核态，当获取到锁的时候需要从内核态恢复，需要线程上下文切换。 （线程被阻塞后便进入内核（Linux）调度状态，这个会导致系统在用户态与内核态之间来回切换，严重影响锁的性能）</p>
+<h3 id="可重入锁和不可重入锁"><a href="#可重入锁和不可重入锁" class="headerlink" title="可重入锁和不可重入锁"></a>可重入锁和不可重入锁</h3><p>不可重入锁：只判断这个锁有没有被锁上；只要被锁上，申请锁的线程都会被要求等待。实现简单</p>
+<p>可重入锁：不仅判断锁有没有被锁上，还会判断锁是谁锁上的，自己上锁的时候，依旧可以再次访问临界资源，并把加锁次数加一。</p>
+<p>设计了加锁次数：<strong>以在解锁的时候，可以确保所有加锁的过程都解锁了，其他线程才能访问。不然没有加锁的参考值，也就不知道什么时候解锁？解锁多少次？才能保证本线程已经访问完临界资源了可以唤醒其他线程访问了。实现相对复杂。</strong></p>
+<p>总结：这个重入的概念就是，拿到锁的代码能不能多次以不同的方式访问临界资源而不出现死锁等相关问题。经典之处在于判断了需要使用锁的线程是否为加锁的线程。如果是，则拥有<strong>重（chong）入的</strong>能力。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/08/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%AE%80%E4%BB%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java并发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -603,212 +833,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/01/0301%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-0229每日一题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">0229每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-02-29T13:41:19.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>来源：ssrcoder</p>
-<p>假设如下代码中，若t1线程在t2线程启动之前已经完成启动。代码的输出是（） </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fzzf;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">                    <span class="keyword">try</span>&#123;</span><br><span class="line">                        obj.wait();</span><br><span class="line">                        System.out.println(<span class="string">"thread 1 wake up."</span>);</span><br><span class="line">                    &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        t1.start();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">                    obj.notifyAll();</span><br><span class="line">                    System.out.println(<span class="string">"thread 2 sent notify"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>A.Thread 1 wake up</strong><br>    <strong>Thread 2 sent notify.</strong><br><strong>B.Thread 2 sent notify.</strong><br>    <strong>Thread 1 wake up</strong><br><strong>C.A、B皆有可能</strong><br><strong>D.程序无输出卡死</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java设计原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">Java设计原则</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="archive-article-date">
-  	<time datetime="2020-02-28T05:17:53.467Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><p><strong>单一职责原则</strong>：修改类的原因应该只有一个，一个类只负责一个事。</p>
-<p><strong>开放封闭原则</strong>：类应该对扩展开放，对修改关闭。</p>
-<p><strong>里氏替换原则</strong>：子类的对象必须能够替换掉所有父类对象。子类需要能够当成父类来使用，并且需要比父类更加特殊。</p>
-<p><strong>接口分离原则</strong>：不应该强迫客户依赖于它们不用的方法。</p>
-<p><strong>依赖倒置原则</strong>：<strong>高层模块不应该依赖于底层模块</strong>；二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。</p>
-<p><strong>迪米特法则</strong>：最少知识原则，一个对象对其他对象有尽可能少的了解，不和陌生人说话。</p>
-<p><strong>合成复用原则</strong>：尽量使用对象组合，而不是通过继承来达到复用的目的。</p>
-<blockquote>
-<p>  <strong>共同封闭原则</strong>：一起的类应该组合在一起(同一个包里)，如果必须修改应用程序里的代码，我们希望所有的修改都发生在一个包里（修改关闭），而不是遍布在很多包里。</p>
-<p>  <strong>稳定抽象原则</strong>：最稳定的包应该是最抽象的包，不稳定的包是具体的包，即包的抽象程度跟它的稳定性成正比。</p>
-<p>  <strong>稳定依赖原则</strong>：包之间的依赖关系都应该是稳定方向的依赖，包要依赖的包要比自己更具有稳定性。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java基础复习(3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">Java基础复习(3)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/" class="archive-article-date">
-  	<time datetime="2020-02-28T02:25:36.021Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h2><p>重载：<strong>发生在同一个类中，方法名必须相同，参数类型不同，个数不同，顺序不同</strong>，方法返回值和访问修饰符也可以不同。</p>
-<p><strong>Java允许重载任何方法，而不只是构造器方法。因此，要完整描述一个方法，需要指出方法名以及参数类型。这叫做方法签名。</strong></p>
-<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写,发生在子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类。另外，如果父类方法访问修饰符为 private 则子类就不能重写该方法。<strong>也就是说方法提供的行为改变，而方法的外貌并没有改变。</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">展开全文 >></a>
         </p>
       
 

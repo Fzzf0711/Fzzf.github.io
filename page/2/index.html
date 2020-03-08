@@ -65,7 +65,7 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 14
+            总文章数 17
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -153,6 +153,251 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-0229每日一题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">0229每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-02-29T13:41:19.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>来源：ssrcoder</p>
+<p>假设如下代码中，若t1线程在t2线程启动之前已经完成启动。代码的输出是（） </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fzzf;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">                    <span class="keyword">try</span>&#123;</span><br><span class="line">                        obj.wait();</span><br><span class="line">                        System.out.println(<span class="string">"thread 1 wake up."</span>);</span><br><span class="line">                    &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        t1.start();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">                    obj.notifyAll();</span><br><span class="line">                    System.out.println(<span class="string">"thread 2 sent notify"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>A.Thread 1 wake up</strong><br>    <strong>Thread 2 sent notify.</strong><br><strong>B.Thread 2 sent notify.</strong><br>    <strong>Thread 1 wake up</strong><br><strong>C.A、B皆有可能</strong><br><strong>D.程序无输出卡死</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/29/0229%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java设计原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">Java设计原则</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="archive-article-date">
+  	<time datetime="2020-02-28T05:17:53.467Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><p><strong>单一职责原则</strong>：修改类的原因应该只有一个，一个类只负责一个事。</p>
+<p><strong>开放封闭原则</strong>：类应该对扩展开放，对修改关闭。</p>
+<p><strong>里氏替换原则</strong>：子类的对象必须能够替换掉所有父类对象。子类需要能够当成父类来使用，并且需要比父类更加特殊。</p>
+<p><strong>接口分离原则</strong>：不应该强迫客户依赖于它们不用的方法。</p>
+<p><strong>依赖倒置原则</strong>：<strong>高层模块不应该依赖于底层模块</strong>；二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。</p>
+<p><strong>迪米特法则</strong>：最少知识原则，一个对象对其他对象有尽可能少的了解，不和陌生人说话。</p>
+<p><strong>合成复用原则</strong>：尽量使用对象组合，而不是通过继承来达到复用的目的。</p>
+<blockquote>
+<p>  <strong>共同封闭原则</strong>：一起的类应该组合在一起(同一个包里)，如果必须修改应用程序里的代码，我们希望所有的修改都发生在一个包里（修改关闭），而不是遍布在很多包里。</p>
+<p>  <strong>稳定抽象原则</strong>：最稳定的包应该是最抽象的包，不稳定的包是具体的包，即包的抽象程度跟它的稳定性成正比。</p>
+<p>  <strong>稳定依赖原则</strong>：包之间的依赖关系都应该是稳定方向的依赖，包要依赖的包要比自己更具有稳定性。</p>
+</blockquote>
+<h2 id="工厂设计模式"><a href="#工厂设计模式" class="headerlink" title="工厂设计模式"></a>工厂设计模式</h2><p>Spring使用工厂模式可以通过 <code>BeanFactory</code> 或 <code>ApplicationContext</code> 创建 bean 对象。</p>
+<p><strong>两者对比：</strong></p>
+<ul>
+<li><code>BeanFactory</code> ：延迟注入(使用到某个 bean 的时候才会注入),相比于<code>ApplicationContext</code> 来说会占用更少的内存，程序启动速度更快。</li>
+<li><code>ApplicationContext</code> ：容器启动的时候，不管你用没用到，一次性创建所有 bean 。<code>BeanFactory</code> 仅提供了最基本的依赖注入支持，<code>ApplicationContext</code> 扩展了 <code>BeanFactory</code> ,除了有<code>BeanFactory</code>的功能还有额外更多功能，所以一般开发人员使用<code>ApplicationContext</code>会更多。</li>
+</ul>
+<p>ApplicationContext的三个实现类：</p>
+<ol>
+<li><code>ClassPathXmlApplication</code>：把上下文文件当成类路径资源。</li>
+<li><code>FileSystemXmlApplication</code>：从文件系统中的 XML 文件载入上下文定义信息。</li>
+<li><code>XmlWebApplicationContext</code>：从Web系统中的XML文件载入上下文定义信息。</li>
+</ol>
+<h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><p>在我们的系统中，有一些对象其实我们只需要一个，比如说：线程池、缓存、对话框、注册表、日志对象、充当打印机、显卡等设备驱动程序的对象。事实上，这一类对象只能有一个实例，如果制造出多个实例就可能会导致一些问题的产生，比如：程序的行为异常、资源使用过量、或者不一致性的结果。</p>
+<p><strong>使用单例模式的好处:</strong></p>
+<ul>
+<li>对于频繁使用的对象，可以省略创建对象所花费的时间，这对于那些重量级对象而言，是非常可观的一笔系统开销；</li>
+<li>由于 new 操作的次数减少，因而对系统内存的使用频率也会降低，这将减轻 GC 压力，缩短 GC 停顿时间。</li>
+</ul>
+<p><strong>Spring 中 bean 的默认作用域就是 singleton(单例)的。</strong> 除了 singleton 作用域，Spring 中 bean 还有下面几种作用域：</p>
+<ul>
+<li>prototype : 每次请求都会创建一个新的 bean 实例。</li>
+<li>request : 每一次HTTP请求都会产生一个新的bean，该bean仅在当前HTTP request内有效。</li>
+<li>session : 每一次HTTP请求都会产生一个新的 bean，该bean仅在当前 HTTP session 内有效。</li>
+<li>global-session： 全局session作用域，仅仅在基于portlet的web应用中才有意义，Spring5已经没有了。Portlet是能够生成语义代码(例如：HTML)片段的小型Java Web插件。它们基于portlet容器，可以像servlet一样处理HTTP请求。但是，与 servlet 不同，每个 portlet 都有不同的会话</li>
+</ul>
+<p><strong>Spring 实现单例的方式：</strong></p>
+<ul>
+<li>xml : <code>&lt;bean id=&quot;userService&quot; class=&quot;top.snailclimb.UserService&quot; scope=&quot;singleton&quot;/&gt;</code></li>
+<li>注解：<code>@Scope(value = &quot;singleton&quot;)</code></li>
+</ul>
+<p>Spring 通过 ConcurrentHashMap 实现单例注册表的特殊方式实现单例模式。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring 框架中用到了哪些设计模式？</p>
+<p><strong>工厂设计模式</strong> : Spring使用工厂模式通过 <code>BeanFactory</code>、<code>ApplicationContext</code> 创建 bean 对象。</p>
+<p><strong>代理设计模式</strong> : Spring AOP 功能的实现。</p>
+<p><strong>单例设计模式</strong> : Spring 中的 Bean 默认都是单例的。</p>
+<p><strong>模板方法模式</strong> : Spring 中 <code>jdbcTemplate</code>、<code>hibernateTemplate</code> 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</p>
+<p><strong>包装器设计模式</strong> : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
+<p><strong>观察者模式:</strong> Spring 事件驱动模型就是观察者模式很经典的一个应用。</p>
+<p><strong>适配器模式</strong> :Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配<code>Controller</code>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/28/Java%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java基础复习(3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">Java基础复习(3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/" class="archive-article-date">
+  	<time datetime="2020-02-28T02:25:36.021Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h2><p>重载：<strong>发生在同一个类中，方法名必须相同，参数类型不同，个数不同，顺序不同</strong>，方法返回值和访问修饰符也可以不同。</p>
+<p><strong>Java允许重载任何方法，而不只是构造器方法。因此，要完整描述一个方法，需要指出方法名以及参数类型。这叫做方法签名。</strong></p>
+<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写,发生在子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类。另外，如果父类方法访问修饰符为 private 则子类就不能重写该方法。<strong>也就是说方法提供的行为改变，而方法的外貌并没有改变。</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/28/Java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(3)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java基础复习(2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">

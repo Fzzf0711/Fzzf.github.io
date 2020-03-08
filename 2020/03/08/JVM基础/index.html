@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>缓存概念简介 | Fzzf的博客</title>
+  <title>JVM基础 | Fzzf的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="缓存特征命中率当某个请求能够通过访问缓存而得到响应时，称为缓存命中。 缓存命中率越高，缓存的利用率也就越高。 最大空间缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。 当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。 淘汰策略FIFO（First In First Out）：先进先出策略，在实时性的场景下，需要经常访问最新的数据，那么就可">
+  <meta name="description" content="Java 内存区域详解一 概述对于 Java 程序员来说，在虚拟机自动内存管理机制下，不再需要像 C&#x2F;C++程序开发程序员这样为每一个 new 操作去写对应的 delete&#x2F;free 操作，不容易出现内存泄漏和内存溢出问题。正是因为 Java 程序员把内存控制权利交给 Java 虚拟机，一旦出现内存泄漏和溢出方面的问题，如果不了解虚拟机是怎样使用内存的，那么排查错误将会是一个非常艰巨的任务。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="缓存概念简介">
-<meta property="og:url" content="http://yoursite.com/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:title" content="JVM基础">
+<meta property="og:url" content="http://yoursite.com/2020/03/08/JVM%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Fzzf的博客">
-<meta property="og:description" content="缓存特征命中率当某个请求能够通过访问缓存而得到响应时，称为缓存命中。 缓存命中率越高，缓存的利用率也就越高。 最大空间缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。 当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。 淘汰策略FIFO（First In First Out）：先进先出策略，在实时性的场景下，需要经常访问最新的数据，那么就可">
+<meta property="og:description" content="Java 内存区域详解一 概述对于 Java 程序员来说，在虚拟机自动内存管理机制下，不再需要像 C&#x2F;C++程序开发程序员这样为每一个 new 操作去写对应的 delete&#x2F;free 操作，不容易出现内存泄漏和内存溢出问题。正是因为 Java 程序员把内存控制权利交给 Java 虚拟机，一旦出现内存泄漏和溢出方面的问题，如果不了解虚拟机是怎样使用内存的，那么排查错误将会是一个非常艰巨的任务。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-03T07:12:18.794Z">
-<meta property="article:modified_time" content="2020-03-03T07:36:20.958Z">
+<meta property="og:image" content="https://camo.githubusercontent.com/a66819fd82c6adfa69b368edf3c52b1fa9cdc89d/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d332f4a564de8bf90e8a18ce697b6e695b0e68daee58cbae59f9f2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/0bcc6c01a919b175827f0d5540aeec115df6c001/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d334a617661e8bf90e8a18ce697b6e695b0e68daee58cbae59f9f4a444b312e382e706e67">
+<meta property="article:published_time" content="2020-03-08T13:45:41.458Z">
+<meta property="article:modified_time" content="2020-03-08T15:10:35.724Z">
 <meta property="article:author" content="Fzzf">
 <meta property="article:tag" content="菜">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/a66819fd82c6adfa69b368edf3c52b1fa9cdc89d/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d332f4a564de8bf90e8a18ce697b6e695b0e68daee58cbae59f9f2e706e67">
   
     <link rel="alternative" href="/atom.xml" title="Fzzf的博客" type="application/atom+xml">
   
@@ -154,79 +157,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-缓存概念简介" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JVM基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      缓存概念简介
+      JVM基础
     </h1>
   
 
         
-        <a href="/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2020-03-03T07:12:18.794Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
+        <a href="/2020/03/08/JVM%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-03-08T13:45:41.458Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="缓存特征"><a href="#缓存特征" class="headerlink" title="缓存特征"></a>缓存特征</h2><h3 id="命中率"><a href="#命中率" class="headerlink" title="命中率"></a>命中率</h3><p>当某个请求能够通过访问缓存而得到响应时，称为缓存命中。</p>
-<p>缓存命中率越高，缓存的利用率也就越高。</p>
-<h3 id="最大空间"><a href="#最大空间" class="headerlink" title="最大空间"></a>最大空间</h3><p>缓存通常位于内存中，内存的空间通常比磁盘空间小的多，因此缓存的最大空间不可能非常大。</p>
-<p>当缓存存放的数据量超过最大空间时，就需要淘汰部分数据来存放新到达的数据。</p>
-<h3 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h3><p><strong>FIFO（First In First Out）：先进先出策略</strong>，在实时性的场景下，需要经常访问最新的数据，那么就可以使用 FIFO，使得最先进入的数据（最晚的数据）被淘汰。</p>
-<p><strong>LRU（Least Recently Used）：最近最久未使用策略</strong>，优先淘汰最久未使用的数据，也就是上次被访问时间距离现在最久的数据。该策略可以保证内存中的数据都是热点数据，也就是经常被访问的数据，从而保证缓存命中率。</p>
-<p><strong>LFU（Least Frequently Used）：最不经常使用策略</strong>，优先淘汰一段时间内使用次数最少的数据。</p>
+        <h1 id="Java-内存区域详解"><a href="#Java-内存区域详解" class="headerlink" title="Java 内存区域详解"></a>Java 内存区域详解</h1><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>对于 Java 程序员来说，在虚拟机自动内存管理机制下，不再需要像 C/C++程序开发程序员这样为每一个 new 操作去写对应的 delete/free 操作，不容易出现内存泄漏和内存溢出问题。正是因为 Java 程序员把内存控制权利交给 Java 虚拟机，一旦出现内存泄漏和溢出方面的问题，如果不了解虚拟机是怎样使用内存的，那么排查错误将会是一个非常艰巨的任务。</p>
 <a id="more"></a>
 
-<h2 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h2><h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>当 HTTP 响应允许进行缓存时，浏览器会将 HTML、CSS、JavaScript、图片等静态资源进行缓存。</p>
-<h3 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h3><p>网络服务提供商（ISP）是网络访问的第一跳，通过将数据缓存在 ISP 中能够大大提高用户的访问速度。</p>
-<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>反向代理位于服务器之前，请求与响应都需要经过反向代理。通过将数据缓存在反向代理，在用户请求反向代理时就可以直接使用缓存进行响应。</p>
-<h3 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h3><p>使用 Guava Cache 将数据缓存在服务器本地内存中，服务器代码可以直接读取本地内存中的缓存，速度非常快。</p>
-<h3 id="分布式缓存"><a href="#分布式缓存" class="headerlink" title="分布式缓存"></a>分布式缓存</h3><p>使用 Redis、Memcache 等分布式缓存将数据缓存在分布式缓存系统中。</p>
-<p>相对于本地缓存来说，分布式缓存单独部署，可以根据需求分配硬件资源。不仅如此，服务器集群都可以访问分布式缓存，而本地缓存需要在服务器集群之间进行同步，实现难度和性能开销上都非常大。</p>
-<h3 id="数据库缓存"><a href="#数据库缓存" class="headerlink" title="数据库缓存"></a>数据库缓存</h3><p>MySQL 等数据库管理系统具有自己的查询缓存机制来提高查询效率。</p>
-<h3 id="Java-内部的缓存"><a href="#Java-内部的缓存" class="headerlink" title="Java 内部的缓存"></a>Java 内部的缓存</h3><p>Java 为了优化空间，提高字符串、基本数据类型包装类的创建效率，设计了字符串常量池及 Byte、Short、Character、Integer、Long、Boolean 这六种包装类缓冲池。</p>
-<h3 id="CPU-多级缓存"><a href="#CPU-多级缓存" class="headerlink" title="CPU 多级缓存"></a>CPU 多级缓存</h3><p>CPU 为了解决运算速度与主存 IO 速度不匹配的问题，引入了多级缓存结构，同时使用 MESI 等缓存一致性协议来解决多核 CPU 缓存数据一致性的问题。</p>
-<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>内容分发网络（Content distribution network，CDN）是一种互连的网络系统，它利用更靠近用户的服务器从而更快更可靠地将 HTML、CSS、JavaScript、音乐、图片、视频等静态资源分发给用户。</p>
-<p>依靠部署在各地的边缘服务器，通过中心平台的负载均衡，内容分发，，用户就近获取所需内容，降低网络拥塞，提高用户访问相应速度和命中率，关键是内容存储和分发技术。</p>
-<p>归纳起来，CDN具有以下主要功能：</p>
-<p>(1)节省骨干网带宽，减少带宽需求量；  </p>
-<p>(2)提供服务器端加速，解决由于用户访问量大造成的服务器过载问题； </p>
-<p>(3)服务商能使用Web Cache技术在本地缓存用户访问过的Web页面和对象，实现相同对象的访问无须占用主干的出口带宽，并提高用户访问因特网页面的相应时间的需求； </p>
-<p>(4)能克服网站分布不均的问题，并且能降低网站自身建设和维护成本； </p>
-<p>(5)降低“通信风暴”的影响，提高网络访问的稳定性。 </p>
-<p>CDN 主要有以下优点：</p>
-<p>更快地将数据分发给用户；</p>
-<p>通过部署多台服务器，从而提高系统整体的带宽性能；</p>
-<p>多台服务器可以看成是一种冗余机制，从而具有高可用性。</p>
-<h3 id="缓存问题"><a href="#缓存问题" class="headerlink" title="缓存问题"></a>缓存问题</h3><h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p>指的是对某个一定不存在的数据进行请求，该请求将会穿透缓存到达数据库。</p>
-<p>解决方案：</p>
-<p>对这些不存在的数据缓存一个空数据，从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击；</p>
-<p>对这类请求进行过滤，接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；</p>
-<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><p>缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力。</p>
-<p>解决方案：设置热点数据永远不过期。</p>
-<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><p>指的是由于数据没有被加载到缓存中，或者缓存数据在同一时间大面积失效（过期），又或者缓存服务器宕机，导致大量的请求都到达数据库。</p>
-<p>在有缓存的系统中，系统非常依赖于缓存，缓存分担了很大一部分的数据请求。当发生缓存雪崩时，数据库无法处理这么大的请求，导致数据库崩溃。</p>
-<p>解决方案：</p>
-<p>缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。</p>
-<p>如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。</p>
-<p>设置热点数据永远不过期。</p>
-<h4 id="缓存一致性"><a href="#缓存一致性" class="headerlink" title="缓存一致性"></a>缓存一致性</h4><p>缓存一致性要求数据更新的同时缓存数据也能够实时更新。</p>
-<p>解决方案：</p>
-<p>在数据更新的同时立即去更新缓存；</p>
-<p>在读缓存之前先判断缓存是否是最新的，如果不是最新的先进行更新。</p>
-<p>要保证缓存一致性需要付出很大的代价，缓存数据最好是那些对一致性要求不高的数据，允许缓存数据存在一些脏数据。</p>
-<h4 id="缓存-“无底洞”-现象"><a href="#缓存-“无底洞”-现象" class="headerlink" title="缓存 “无底洞” 现象"></a>缓存 “无底洞” 现象</h4><p>指的是为了满足业务要求添加了大量缓存节点，但是性能不但没有好转反而下降了的现象。</p>
-<p>产生原因：缓存系统通常采用 hash 函数将 key 映射到对应的缓存节点，随着缓存节点数目的增加，键值分布到更多的节点上，导致客户端一次批量操作会涉及多次网络操作，这意味着批量操作的耗时会随着节点数目的增加而不断增大。此外，网络连接数变多，对节点的性能也有一定影响。</p>
-<p>解决方案：</p>
-<p>优化批量数据操作命令；</p>
-<p>减少网络通信次数；</p>
-<p>降低接入成本，使用长连接 / 连接池，NIO 等。</p>
+<h2 id="二-运行时数据区域"><a href="#二-运行时数据区域" class="headerlink" title="二 运行时数据区域"></a>二 运行时数据区域</h2><p>Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分成若干个不同的数据区域。JDK. 1.8 和之前的版本略有不同，下面会介绍到。</p>
+<p><strong>JDK 1.8 之前：</strong></p>
+<p><a href="https://camo.githubusercontent.com/a66819fd82c6adfa69b368edf3c52b1fa9cdc89d/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d332f4a564de8bf90e8a18ce697b6e695b0e68daee58cbae59f9f2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/a66819fd82c6adfa69b368edf3c52b1fa9cdc89d/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d332f4a564de8bf90e8a18ce697b6e695b0e68daee58cbae59f9f2e706e67" alt="img"></a></p>
+<p><strong>JDK 1.8 ：</strong></p>
+<p><a href="https://camo.githubusercontent.com/0bcc6c01a919b175827f0d5540aeec115df6c001/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d334a617661e8bf90e8a18ce697b6e695b0e68daee58cbae59f9f4a444b312e382e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/0bcc6c01a919b175827f0d5540aeec115df6c001/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d334a617661e8bf90e8a18ce697b6e695b0e68daee58cbae59f9f4a444b312e382e706e67" alt="img"></a></p>
+<p><strong>线程私有的：</strong></p>
+<ul>
+<li>程序计数器</li>
+<li>虚拟机栈</li>
+<li>本地方法栈</li>
+</ul>
+<p><strong>线程共享的：</strong></p>
+<ul>
+<li>堆</li>
+<li>方法区</li>
+<li>直接内存 (非运行时数据区的一部分)</li>
+</ul>
+<h3 id="2-1-程序计数器"><a href="#2-1-程序计数器" class="headerlink" title="2.1 程序计数器"></a>2.1 程序计数器</h3><p>程序计数器是一块较小的内存空间，可以看作是当前线程所执行的字节码的行号指示器。<strong>字节码解释器工作时通过改变这个计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等功能都需要依赖这个计数器来完成。</strong></p>
+<p>另外，<strong>为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各线程之间计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。</strong></p>
+<p><strong>从上面的介绍中我们知道程序计数器主要有两个作用：</strong></p>
+<ol>
+<li>字节码解释器通过改变程序计数器来依次读取指令，从而实现代码的流程控制，如：顺序执行、选择、循环、异常处理。</li>
+<li>在多线程的情况下，程序计数器用于记录当前线程执行的位置，从而当线程被切换回来的时候能够知道该线程上次运行到哪儿了。</li>
+</ol>
+<p><strong>注意：程序计数器是唯一一个不会出现 OutOfMemoryError 的内存区域，它的生命周期随着线程的创建而创建，随着线程的结束而死亡。</strong></p>
 
       
 
@@ -306,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/03/%E7%BC%93%E5%AD%98%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/08/JVM%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -320,18 +298,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/05/Redis%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Redis基础
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/02/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">论文翻译</div>
+    <a href="/2020/03/08/Java%E5%B9%B6%E5%8F%91%E8%BF%9B%E9%98%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java并发进阶</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -358,7 +327,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存特征"><span class="toc-number">1.</span> <span class="toc-text">缓存特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命中率"><span class="toc-number">1.1.</span> <span class="toc-text">命中率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大空间"><span class="toc-number">1.2.</span> <span class="toc-text">最大空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#淘汰策略"><span class="toc-number">1.3.</span> <span class="toc-text">淘汰策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存位置"><span class="toc-number">2.</span> <span class="toc-text">缓存位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器"><span class="toc-number">2.1.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISP"><span class="toc-number">2.2.</span> <span class="toc-text">ISP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向代理"><span class="toc-number">2.3.</span> <span class="toc-text">反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地缓存"><span class="toc-number">2.4.</span> <span class="toc-text">本地缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式缓存"><span class="toc-number">2.5.</span> <span class="toc-text">分布式缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库缓存"><span class="toc-number">2.6.</span> <span class="toc-text">数据库缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-内部的缓存"><span class="toc-number">2.7.</span> <span class="toc-text">Java 内部的缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-多级缓存"><span class="toc-number">2.8.</span> <span class="toc-text">CPU 多级缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-number">2.9.</span> <span class="toc-text">CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存问题"><span class="toc-number">2.10.</span> <span class="toc-text">缓存问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存穿透"><span class="toc-number">2.10.1.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存击穿"><span class="toc-number">2.10.2.</span> <span class="toc-text">缓存击穿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存雪崩"><span class="toc-number">2.10.3.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存一致性"><span class="toc-number">2.10.4.</span> <span class="toc-text">缓存一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存-“无底洞”-现象"><span class="toc-number">2.10.5.</span> <span class="toc-text">缓存 “无底洞” 现象</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-内存区域详解"><span class="toc-number">1.</span> <span class="toc-text">Java 内存区域详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-概述"><span class="toc-number">1.1.</span> <span class="toc-text">一 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-运行时数据区域"><span class="toc-number">1.2.</span> <span class="toc-text">二 运行时数据区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-程序计数器"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 程序计数器</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
